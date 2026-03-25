@@ -1,0 +1,110 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-coffee text-cream antialiased selection:bg-burnt-orange selection:text-cream;
+    font-family: 'Montserrat', system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+    font-family: 'Oswald', 'Space Grotesk', sans-serif;
+  }
+  /* Apply Iosevka Charon to small text/labels globally */
+  .text-xs, .text-sm, label, button, .tracking-widest {
+    font-family: 'Iosevka Charon', 'Iosevka Charon Mono', monospace;
+  }
+}
+
+.grain-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.04;
+  background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+}
+
+/* Custom lenis scrollbar overrides if necessary */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* --- Leaflet Map Custom Aesthetics --- */
+
+/* Desaturate the map tiles to match the new industrial grey theme */
+.map-tiles-light {
+  filter: grayscale(100%) brightness(0.95) contrast(1.1) !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Custom Popup Styling */
+.custom-popup .leaflet-popup-content-wrapper {
+  background-color: #eeebe2 !important; /* Linen (Off-white) */
+  color: #3c3c3c !important; /* Charcoal */
+  border-radius: 14px !important;
+  padding: 0 !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(143,144,138,0.1) !important;
+}
+.custom-popup .leaflet-popup-tip {
+  background-color: #eeebe2 !important;
+}
+.custom-popup .leaflet-popup-content {
+  margin: 0 !important;
+  width: auto !important;
+}
+/* Override internal leaflet link styling */
+.custom-popup a.leaflet-popup-close-button {
+  color: #3c3c3c !important;
+  padding: 10px !important;
+  font-size: 20px !important;
+  z-index: 10;
+}
+.custom-popup a.leaflet-popup-close-button:hover {
+  color: #8f908a !important; /* Stone */
+}
+
+/* --- Hero Section Exact Overrides --- */
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  /* Ensure clarity */
+  filter: none;
+  opacity: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  /* Subtle dark gradient overlay instead of light grey */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+}
