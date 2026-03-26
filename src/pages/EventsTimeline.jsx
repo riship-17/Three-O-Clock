@@ -14,7 +14,7 @@ const timeline = [
     tags: [],
     artist: null,
     desc: 'As the evening unfolded, the café transformed into a space of rhythm and connection. Warm lights, clinking cups, and the quiet hum of anticipation.',
-    videoSrc: '/videos/video2.mp4',
+    videoSrc: 'https://res.cloudinary.com/dgry55pvk/video/upload/v1774433227/If_you_weren_t_here_you_missed_this.Raw_unfiltered_moments_from_our_live_music_night_at_Three_ysbchl.mp4',
     side: 'center',
   },
   {
@@ -67,7 +67,6 @@ function VideoCard({ event, onPlay, isIntro }) {
   const isLeft = event.side === 'left';
   const isRight = event.side === 'right';
 
-  // Intro is full-width centered
   if (isIntro) {
     return (
       <motion.div
@@ -75,14 +74,14 @@ function VideoCard({ event, onPlay, isIntro }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.8 }}
-        className="timeline-item relative flex flex-col items-center gap-8 max-w-2xl mx-auto text-center"
+        className="timeline-item relative flex flex-col items-center gap-8 max-w-2xl mx-auto text-center px-4"
       >
-        {/* Dot */}
+        {/* Intro Dot */}
         <div className="timeline-dot absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-[#d97706] shadow-[0_0_24px_6px_rgba(217,119,6,0.5)] border-4 border-[#fdfcf8] z-10" />
 
-        {/* Video */}
+        {/* Video Area */}
         <div
-          className="event-video relative w-full rounded-2xl overflow-hidden shadow-[0_20px_60px_-10px_rgba(0,0,0,0.35)] cursor-pointer group"
+          className="event-video relative w-full rounded-2xl md:rounded-[32px] overflow-hidden shadow-2xl cursor-pointer group"
           onClick={() => onPlay(event)}
         >
           <video
@@ -91,22 +90,20 @@ function VideoCard({ event, onPlay, isIntro }) {
             loop
             playsInline
             preload="metadata"
-            onMouseOver={e => e.target.play()}
-            onMouseOut={e => { e.target.pause(); e.target.currentTime = 0; }}
             className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500 flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-white/90 text-[#4B2E2E] flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-transform duration-300">
-              <Play className="w-6 h-6 ml-1" fill="currentColor" />
+          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white text-black flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-300">
+              <Play className="w-8 h-8 ml-1" fill="currentColor" />
             </div>
           </div>
         </div>
 
-        {/* Text */}
-        <div className="event-content space-y-3 px-4">
-          <span className="inline-block text-[#d97706] text-xs font-bold tracking-[0.25em] uppercase">{event.date}</span>
-          <h3 className="text-3xl md:text-4xl font-serif font-bold text-[#4B2E2E]">{event.title}</h3>
-          <p className="text-[#61615f] leading-relaxed text-lg italic">"{event.desc}"</p>
+        {/* Intro Text */}
+        <div className="event-content space-y-4">
+          <span className="inline-block text-[#d97706] text-xs font-black tracking-[0.3em] uppercase">{event.date}</span>
+          <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-[#4B2E2E] tracking-tight">{event.title}</h3>
+          <p className="text-[#61615f] leading-relaxed text-lg italic max-w-xl mx-auto opacity-70">"{event.desc}"</p>
         </div>
       </motion.div>
     );
@@ -114,21 +111,19 @@ function VideoCard({ event, onPlay, isIntro }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: isLeft ? -60 : 60 }}
+      initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-      className={`timeline-item event-card relative flex flex-col md:flex-row items-start gap-10 md:gap-16 ${isRight ? 'md:flex-row-reverse' : ''}`}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={`timeline-item event-card relative flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-24 ${isRight ? 'lg:flex-row-reverse' : ''}`}
     >
-      {/* Dot */}
-      <div className="timeline-dot absolute left-[calc(50%-10px)] md:left-1/2 -translate-x-1/2 top-6 w-5 h-5 rounded-full bg-[#E8DCC4] shadow-[0_0_18px_4px_rgba(232,220,196,0.7)] border-4 border-[#fdfcf8] z-10 hidden md:block" />
-      {/* Mobile dot */}
-      <div className="absolute left-0 top-6 w-4 h-4 rounded-full bg-[#E8DCC4] shadow-[0_0_12px_3px_rgba(232,220,196,0.6)] border-2 border-[#fdfcf8] z-10 md:hidden" />
+      {/* Visual connection dot on desktop */}
+      <div className="timeline-dot absolute left-[calc(50%-10px)] md:left-1/2 -translate-x-1/2 top-10 w-5 h-5 rounded-full bg-[#E8DCC4] border-4 border-[#fdfcf8] z-10 hidden lg:block" />
 
-      {/* Video half */}
-      <div className="event-video w-full md:w-1/2">
+      {/* Video Container */}
+      <div className="event-video w-full lg:w-1/2">
         <div
-          className="relative rounded-2xl md:rounded-[28px] overflow-hidden shadow-[0_24px_60px_-12px_rgba(0,0,0,0.4)] cursor-pointer group"
+          className="relative rounded-[24px] lg:rounded-[40px] overflow-hidden shadow-2xl cursor-pointer group"
           onClick={() => onPlay(event)}
         >
           <video
@@ -137,60 +132,46 @@ function VideoCard({ event, onPlay, isIntro }) {
             loop
             playsInline
             preload="metadata"
-            onMouseOver={e => e.target.play()}
-            onMouseOut={e => { e.target.pause(); e.target.currentTime = 0; }}
             className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          {/* Golden overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#4B2E2E]/40 via-transparent to-transparent group-hover:opacity-0 transition-opacity duration-500" />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-white/90 text-[#4B2E2E] flex items-center justify-center shadow-[0_0_40px_rgba(255,255,255,0.3)] transform group-hover:scale-110 transition-transform duration-300 opacity-0 group-hover:opacity-100">
+            <div className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center shadow-xl transform opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
               <Play className="w-6 h-6 ml-1" fill="currentColor" />
             </div>
           </div>
-          {/* Bottom label */}
-          <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 to-transparent pointer-events-none">
-            <p className="text-white/90 text-xs font-bold tracking-[0.2em] uppercase">{event.date} · {event.artist}</p>
+          {/* Mobile persistent play icon */}
+          <div className="absolute bottom-4 right-4 bg-white/90 p-3 rounded-full text-black lg:hidden">
+             <Play size={18} fill="currentColor" />
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent pointer-events-none">
+            <p className="text-white text-[10px] font-black tracking-widest uppercase">{event.date} · {event.artist}</p>
           </div>
         </div>
       </div>
 
-      {/* Content half */}
-      <div className={`event-content w-full md:w-1/2 space-y-5 pl-8 md:pl-0 ${isRight ? 'md:text-right md:items-end' : ''} flex flex-col`}>
-        {/* Tags */}
-        <div className={`flex flex-wrap gap-2 ${isRight ? 'md:justify-end' : ''}`}>
+      {/* Content Side */}
+      <div className={`event-content w-full lg:w-1/2 space-y-6 flex flex-col ${isRight ? 'lg:text-right lg:items-end' : ''}`}>
+        <div className={`flex flex-wrap gap-2 ${isRight ? 'lg:justify-end' : ''}`}>
           {event.tags.map(tag => (
-            <span key={tag} className="text-[#d97706] bg-[#d97706]/10 border border-[#d97706]/30 text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full">
+            <span key={tag} className="text-[#d97706] bg-[#d97706]/5 border border-[#d97706]/20 text-[10px] font-black uppercase px-4 py-1 rounded-full">
               {tag}
             </span>
           ))}
         </div>
-
-        {/* Date label */}
-        <span className="text-[#4B2E2E]/50 text-xs tracking-[0.3em] uppercase font-bold">{event.date}</span>
-
-        {/* Title */}
-        <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif font-black text-[#4B2E2E] leading-tight">
+        <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-black text-[#4B2E2E] tracking-tighter leading-none">
           {event.title}
         </h3>
-
-        {/* Divider */}
-        <div className={`w-16 h-[2px] bg-gradient-to-r from-[#d97706] to-[#E8DCC4] rounded-full ${isRight ? 'md:ml-auto' : ''}`} />
-
-        {/* Description */}
-        <p className="text-[#61615f] leading-relaxed text-lg font-light max-w-md">
+        <p className="text-[#61615f] leading-relaxed text-lg font-light max-w-md opacity-80">
           {event.desc}
         </p>
-
-        {/* Click-to-play note */}
         <button
           onClick={() => onPlay(event)}
-          className={`inline-flex items-center gap-2 text-[#4B2E2E] hover:text-[#d97706] font-bold text-sm tracking-widest uppercase transition-colors duration-300 ${isRight ? 'md:self-end' : 'self-start'}`}
+          className={`group inline-flex items-center gap-4 text-black hover:text-[#d97706] font-black text-xs tracking-widest uppercase transition-all ${isRight ? 'lg:self-end' : 'self-start'}`}
         >
-          <div className="w-8 h-8 rounded-full border-2 border-current flex items-center justify-center">
+          <div className="w-10 h-10 rounded-full border-2 border-current flex items-center justify-center group-hover:bg-current group-hover:text-white transition-all">
             <Play className="w-3 h-3 ml-0.5" fill="currentColor" />
           </div>
-          Watch Performance
+          Watch Now
         </button>
       </div>
     </motion.div>
@@ -209,7 +190,6 @@ export default function EventsTimeline() {
     }
   }, [activeVideo]);
 
-  // Close on Escape
   useEffect(() => {
     const handleKey = (e) => { if (e.key === 'Escape') setActiveVideo(null); };
     window.addEventListener('keydown', handleKey);
@@ -220,94 +200,61 @@ export default function EventsTimeline() {
     <div className="events-page bg-[#fdfcf8] min-h-screen overflow-x-hidden">
 
       {/* ── HERO ─────────────────────────────────────── */}
-      <section className="relative w-full h-screen min-h-[600px] flex items-end justify-center bg-black overflow-hidden">
+      <section className="relative w-full h-screen min-h-[640px] flex items-end justify-center bg-black overflow-hidden">
         <video
           autoPlay muted loop playsInline preload="auto"
-          className="absolute inset-0 w-full h-full object-cover opacity-75 pointer-events-none"
+          className="absolute inset-0 w-full h-full object-cover opacity-70"
+          poster="https://res.cloudinary.com/dgry55pvk/image/upload/v1774434021/unnamed_sgww6b.webp"
         >
-          <source src="public/videos/video2.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/dgry55pvk/video/upload/v1774433227/If_you_weren_t_here_you_missed_this.Raw_unfiltered_moments_from_our_live_music_night_at_Three_ysbchl.mp4" type="video/mp4" />
         </video>
 
-        {/* Cinematic overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#4B2E2E]/30 via-transparent to-[#4B2E2E]/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20" />
 
-        {/* Hero content */}
-        <div className="relative z-10 text-center px-6 pb-24 md:pb-32 max-w-4xl">
+        <div className="relative z-10 text-center px-6 pb-20 md:pb-32 max-w-5xl">
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
-            className="text-[#E8DCC4] text-xs md:text-sm tracking-[0.4em] uppercase font-bold mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-[#E8DCC4] text-[10px] md:text-sm font-black tracking-[0.5em] uppercase mb-8"
           >
-            Featuring Offbeat, Vhalam Band &amp; Local Artists
+            A Selection of Live Experiences
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.9, ease: 'easeOut' }}
-            className="text-5xl md:text-7xl lg:text-8xl font-serif font-black text-white leading-[0.95] tracking-tight drop-shadow-2xl mb-6"
+            transition={{ delay: 0.2 }}
+            className="text-6xl md:text-8xl lg:text-9xl font-serif font-black text-white leading-[0.9] tracking-tighter drop-shadow-2xl mb-8"
           >
-            A Night to<br />
-            <span className="text-[#E8DCC4]">Remember</span>
+            Fragments <br />
+            <span className="text-[#E8DCC4]">of Light</span>
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.65, duration: 0.8 }}
-            className="text-white/75 text-lg md:text-2xl font-light tracking-wide"
-          >
-            Where music, people, and moments came alive
-          </motion.p>
-
-          {/* Scroll indicator */}
-          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-            className="mt-12 flex flex-col items-center gap-2"
+            transition={{ delay: 0.4 }}
+            className="text-white/60 text-lg md:text-2xl font-light tracking-wide max-w-2xl mx-auto"
           >
-            <a href="#timeline" className="text-white/40 hover:text-[#E8DCC4] transition-colors duration-300">
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
-              >
-                <ChevronDown size={32} />
-              </motion.div>
-            </a>
+            A vertical journey through the soulful sounds and late-night rhythms of our home.
+          </motion.p>
+
+          <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="mt-16">
+            <ChevronDown size={36} className="text-white/30 mx-auto" />
           </motion.div>
         </div>
       </section>
 
       {/* ── TIMELINE ─────────────────────────────────── */}
-      <section id="timeline" className="timeline relative py-32 md:py-48">
-
-        {/* Section heading */}
-        <div className="text-center mb-24 px-4">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-[#d97706] text-xs tracking-[0.4em] uppercase font-bold mb-4"
-          >
-            Live Music Night · March 2026
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
-            className="text-4xl md:text-6xl font-serif font-black text-[#4B2E2E] tracking-tight"
-          >
-            The Night's Journey
-          </motion.h2>
+      <section id="timeline" className="timeline relative py-32 md:py-60">
+        
+        {/* Section Title */}
+        <div className="text-center mb-32 px-4">
+          <h2 className="text-5xl md:text-7xl font-serif font-black text-[#4B2E2E] tracking-tighter">The Journey</h2>
         </div>
 
-        {/* Center vertical line */}
-        <div className="timeline-line absolute left-4 md:left-1/2 top-40 bottom-16 w-[2px] md:-translate-x-1/2 bg-gradient-to-b from-[#d97706]/80 via-[#E8DCC4]/40 to-transparent rounded-full" />
+        {/* Center line (Desktop Only) */}
+        <div className="absolute left-1/2 -translate-x-1/2 top-48 bottom-48 w-px bg-gradient-to-b from-[#d97706] to-transparent hidden lg:block" />
 
-        {/* Timeline items */}
-        <div className="max-w-6xl mx-auto px-6 md:px-12 space-y-28 md:space-y-40">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-32 md:space-y-64">
           {timeline.map((event) => (
             <VideoCard
               key={event.id}
@@ -319,69 +266,48 @@ export default function EventsTimeline() {
         </div>
       </section>
 
-      {/* ── CAPTURED MOMENTS (MASONRY) ───────────────── */}
-      <section className="py-24 md:py-32 bg-gradient-to-b from-[#fdfcf8] to-[#f5ede0]/40 border-t border-[#4B2E2E]/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-[#d97706] text-xs tracking-[0.4em] uppercase font-bold mb-3"
-            >
-              Captured Moments
-            </motion.p>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-4xl md:text-5xl font-serif font-black text-[#4B2E2E] tracking-tight"
-            >
-              Fragments of the Night
-            </motion.h2>
-            <p className="text-[#61615f] mt-4 text-lg font-light">Every frame tells a story.</p>
+      {/* ── CAPTURED ─────────────────────────────────── */}
+      <section className="py-24 md:py-48 bg-[#1a1a1a] text-[#fdfcf8]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
+            <div className="max-w-2xl">
+              <span className="text-[#d97706] text-xs font-black tracking-[0.4em] uppercase mb-4 block">Archive 001</span>
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-black tracking-tighter">Captured Memories</h2>
+            </div>
+            <p className="text-white/40 text-lg md:text-xl font-light max-w-xs md:text-right">
+              Still frames that define the atmosphere of late night Gandhinagar.
+            </p>
           </div>
           <Masonry
             items={masonryItems}
-            ease="power4.out"
-            duration={0.6}
-            stagger={0.05}
             animateFrom="bottom"
             scaleOnHover
-            hoverScale={0.95}
-            blurToFocus
-            colorShiftOnHover={false}
           />
         </div>
       </section>
 
-      {/* ── VIDEO MODAL ───────────────────────────────── */}
+      {/* ── MODAL ────────────────────────────────────── */}
       <AnimatePresence>
         {activeVideo && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/96 backdrop-blur-lg p-4"
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/98 backdrop-blur-3xl p-4 md:p-8"
             onClick={() => setActiveVideo(null)}
           >
-            {/* Close button */}
             <button
               onClick={() => setActiveVideo(null)}
-              className="absolute top-6 right-6 z-[201] w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors duration-200"
-              aria-label="Close"
+              className="absolute top-8 right-8 z-[201] p-4 bg-white/5 hover:bg-white/10 rounded-full text-white transition-all"
             >
-              <X size={22} />
+              <X size={28} />
             </button>
 
             <motion.div
-              initial={{ scale: 0.94, opacity: 0, y: 16 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.94, opacity: 0, y: 16 }}
-              transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-              className="relative w-full max-w-5xl rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.7)] bg-black"
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="relative w-full max-w-6xl rounded-3xl overflow-hidden shadow-2xl bg-black"
               onClick={e => e.stopPropagation()}
             >
               <video
@@ -390,13 +316,8 @@ export default function EventsTimeline() {
                 autoPlay
                 playsInline
                 src={activeVideo.videoSrc}
-                className="w-full max-h-[80vh] object-contain bg-black"
+                className="w-full max-h-[85vh] object-contain"
               />
-              {/* Modal caption */}
-              <div className="absolute top-0 left-0 right-0 p-5 bg-gradient-to-b from-black/80 to-transparent pointer-events-none">
-                <p className="text-[#E8DCC4] text-xs font-bold tracking-[0.25em] uppercase mb-1">{activeVideo.date}</p>
-                <p className="text-white font-serif font-bold text-xl">{activeVideo.title}</p>
-              </div>
             </motion.div>
           </motion.div>
         )}

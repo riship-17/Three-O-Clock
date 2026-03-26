@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://three-o-clock.web.app/sitemap.xml

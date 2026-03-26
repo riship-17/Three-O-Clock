@@ -58,7 +58,7 @@ const Masonry = ({
   colorShiftOnHover = false
 }) => {
   const columns = useMedia(
-    ['(min-width:1500px)', '(min-width:1000px)', '(min-width:600px)', '(min-width:400px)'],
+    ['(min-width:1280px)', '(min-width:1024px)', '(min-width:768px)', '(min-width:640px)'],
     [5, 4, 3, 2],
     1
   );
@@ -77,21 +77,12 @@ const Masonry = ({
     }
 
     switch (direction) {
-      case 'top':
-        return { x: item.x, y: -200 };
-      case 'bottom':
-        return { x: item.x, y: window.innerHeight + 200 };
-      case 'left':
-        return { x: -200, y: item.y };
-      case 'right':
-        return { x: window.innerWidth + 200, y: item.y };
-      case 'center':
-        return {
-          x: containerRect.width / 2 - item.w / 2,
-          y: containerRect.height / 2 - item.h / 2
-        };
-      default:
-        return { x: item.x, y: item.y + 100 };
+      case 'top': return { x: item.x, y: -200 };
+      case 'bottom': return { x: item.x, y: window.innerHeight + 200 };
+      case 'left': return { x: -200, y: item.y };
+      case 'right': return { x: window.innerWidth + 200, y: item.y };
+      case 'center': return { x: containerRect.width / 2 - item.w / 2, y: containerRect.height / 2 - item.h / 2 };
+      default: return { x: item.x, y: item.y + 100 };
     }
   };
 
@@ -102,16 +93,15 @@ const Masonry = ({
   const grid = useMemo(() => {
     if (!width) return [];
     const colHeights = new Array(columns).fill(0);
-    const gap = 20; // Slightly larger gap for coffee aesthetic rhythm 
+    const gap = columns > 2 ? 24 : 16;
     const totalGaps = (columns - 1) * gap;
     const columnWidth = (width - totalGaps) / columns;
 
     return items.map(child => {
       const col = colHeights.indexOf(Math.min(...colHeights));
       const x = col * (columnWidth + gap);
-      const height = child.height / 2; // Keep user's arbitrary halving logic from prompt
+      const height = child.height || 300;
       const y = colHeights[col];
-
       colHeights[col] += height + gap;
       return { ...child, x, y, w: columnWidth, h: height };
     });
@@ -130,30 +120,11 @@ const Masonry = ({
         const start = getInitialPosition(item);
         gsap.fromTo(
           selector,
-          {
-            opacity: 0,
-            x: start.x,
-            y: start.y,
-            width: item.w,
-            height: item.h,
-            ...(blurToFocus && { filter: 'blur(10px)' })
-          },
-          {
-            opacity: 1,
-            ...animProps,
-            ...(blurToFocus && { filter: 'blur(0px)' }),
-            duration: 0.8,
-            ease: 'power3.out',
-            delay: index * stagger
-          }
+          { opacity: 0, x: start.x, y: start.y, width: item.w, height: item.h, ...(blurToFocus && { filter: 'blur(10px)' }) },
+          { opacity: 1, ...animProps, ...(blurToFocus && { filter: 'blur(0px)' }), duration: 0.8, ease: 'power3.out', delay: index * stagger }
         );
       } else {
-        gsap.to(selector, {
-          ...animProps,
-          duration,
-          ease,
-          overwrite: 'auto'
-        });
+        gsap.to(selector, { ...animProps, duration, ease, overwrite: 'auto' });
       }
     });
 
@@ -161,67 +132,38 @@ const Masonry = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
 
-  const handleMouseEnter = (id, element) => {
+  const handleMouseEnter = (id) => {
     if (scaleOnHover) {
-      gsap.to(`[data-key="${id}"]`, {
-        scale: hoverScale,
-        duration: 0.3,
-        ease: 'power2.out'
-      });
-    }
-    if (colorShiftOnHover) {
-      const overlay = element.querySelector('.color-overlay');
-      if (overlay) gsap.to(overlay, { opacity: 0.3, duration: 0.3 });
+      gsap.to(`[data-key="${id}"]`, { scale: hoverScale, duration: 0.3, ease: 'power2.out' });
     }
   };
 
-  const handleMouseLeave = (id, element) => {
+  const handleMouseLeave = (id) => {
     if (scaleOnHover) {
-      gsap.to(`[data-key="${id}"]`, {
-        scale: 1,
-        duration: 0.3,
-        ease: 'power2.out'
-      });
-    }
-    if (colorShiftOnHover) {
-      const overlay = element.querySelector('.color-overlay');
-      if (overlay) gsap.to(overlay, { opacity: 0, duration: 0.3 });
+      gsap.to(`[data-key="${id}"]`, { scale: 1, duration: 0.3, ease: 'power2.out' });
     }
   };
   
-  // Calculate max height to wrap the absolute grid dynamically
-  const containerHeight = grid.length 
-    ? Math.max(...grid.map(i => i.y + i.h)) 
-    : '100vh';
+  const containerHeight = grid.length ? Math.max(...grid.map(i => i.y + i.h)) : '100vh';
 
   return (
-    <div ref={containerRef} className="relative w-full" style={{ height: containerHeight }}>
+    <div ref={containerRef} className="relative w-full overflow-hidden" style={{ height: containerHeight }}>
       {grid.map(item => (
         <div
           key={item.id}
           data-key={item.id}
-          className="absolute box-content cursor-pointer"
+          className="absolute box-content cursor-pointer px-0.5"
           style={{ willChange: 'transform, width, height, opacity' }}
-          onClick={() => {
-            if (item.url) window.open(item.url, '_blank', 'noopener')
-          }}
-          onMouseEnter={e => handleMouseEnter(item.id, e.currentTarget)}
-          onMouseLeave={e => handleMouseLeave(item.id, e.currentTarget)}
+          onMouseEnter={() => handleMouseEnter(item.id)}
+          onMouseLeave={() => handleMouseLeave(item.id)}
         >
           <div
-            className="group relative w-full h-full bg-cover bg-center rounded-[16px] shadow-[0px_10px_50px_-10px_rgba(0,0,0,0.2)] uppercase text-[10px] leading-[10px] overflow-hidden"
+            className="group relative w-full h-full bg-cover bg-center rounded-[12px] md:rounded-[20px] shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-2xl"
             style={{ backgroundImage: `url('${item.img}')` }}
           >
-            {item.caption && (
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                <span className="text-white tracking-[0.2em] text-xs font-bold px-4 text-center">
-                  {item.caption}
-                </span>
-              </div>
-            )}
-            {colorShiftOnHover && (
-              <div className="color-overlay absolute inset-0 rounded-[16px] bg-gradient-to-tr from-pink-500/50 to-sky-500/50 opacity-0 pointer-events-none" />
-            )}
+            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+               {item.caption && <span className="text-white text-xs font-bold tracking-widest uppercase text-center">{item.caption}</span>}
+            </div>
           </div>
         </div>
       ))}

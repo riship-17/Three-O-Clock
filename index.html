@@ -3,7 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Three O'Clock Cafe</title>
+
+    <!-- Primary SEO -->
+    <title>Three O'Clock Café | Late Night Café in Gandhinagar – Open till 3 AM</title>
+    <meta name="description" content="Three O'Clock Café — Gandhinagar's premium late-night café open till 3 AM. Authentic Vietnamese coffee, live music nights, aesthetic interiors. Located at Raysan, PDPU Road." />
+    <meta name="keywords" content="Three O'Clock Cafe, three oclock cafe, cafe in gandhinagar, late night cafe gandhinagar, vietnamese coffee gandhinagar, cafe near PDPU, raysan cafe, best cafe gandhinagar, live music cafe, aesthetic cafe" />
+    <meta name="author" content="Three O'Clock Café" />
+    <link rel="canonical" href="https://three-o-clock.web.app/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://three-o-clock.web.app/" />
+    <meta property="og:title" content="Three O'Clock Café | Late Night Café in Gandhinagar" />
+    <meta property="og:description" content="Authentic Vietnamese brews, live music, and aesthetic vibes — open till 3 AM in Raysan, Gandhinagar." />
+    <meta property="og:image" content="https://res.cloudinary.com/dgry55pvk/image/upload/v1774434021/unnamed_sgww6b.webp" />
+    <meta property="og:site_name" content="Three O'Clock Café" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Three O'Clock Café | Late Night Café in Gandhinagar" />
+    <meta name="twitter:description" content="Authentic Vietnamese brews, live music, and aesthetic vibes — open till 3 AM." />
+    <meta name="twitter:image" content="https://res.cloudinary.com/dgry55pvk/image/upload/v1774434021/unnamed_sgww6b.webp" />
+
+    <!-- Geo/Location -->
+    <meta name="geo.region" content="IN-GJ" />
+    <meta name="geo.placename" content="Gandhinagar" />
+    <meta name="geo.position" content="23.15745;72.65429" />
+    <meta name="ICBM" content="23.15745, 72.65429" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Iosevka+Charon+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Londrina+Sketch&family=Major+Mono+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mozilla+Headline:wght@200..700&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Rasa:ital,wght@0,300..700;1,300..700&family=Yatra+One&display=swap" rel="stylesheet">
@@ -11,5 +41,46 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Structured Data: Local Business (Google Rich Results) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CafeOrCoffeeShop",
+      "name": "Three O'Clock Café",
+      "alternateName": ["Three O Clock Cafe", "Three Oclock Cafe", "3 O'Clock Café"],
+      "url": "https://three-o-clock.web.app",
+      "image": "https://res.cloudinary.com/dgry55pvk/image/upload/v1774434021/unnamed_sgww6b.webp",
+      "description": "Gandhinagar's premium late-night café open till 3 AM. Authentic Vietnamese coffee, live music nights, and aesthetic interiors.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "226/2, Koba, Khodiyar Pan Parlor, PDPU Road, Raysan",
+        "addressLocality": "Gandhinagar",
+        "addressRegion": "Gujarat",
+        "postalCode": "382700",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 23.15745414390761,
+        "longitude": 72.65428913986581
+      },
+      "telephone": "+919876543210",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "16:00",
+        "closes": "03:00"
+      },
+      "servesCuisine": ["Vietnamese", "Café", "Coffee"],
+      "priceRange": "₹₹",
+      "sameAs": [
+        "https://www.instagram.com/threeoclock_gandhinagar/",
+        "https://www.swiggy.com/restaurants/1339878/dineout"
+      ],
+      "hasMenu": "https://three-o-clock.web.app/#menu",
+      "acceptsReservations": true
+    }
+    </script>
   </body>
 </html>

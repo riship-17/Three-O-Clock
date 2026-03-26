@@ -1,9 +1,24 @@
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
 import ShinyText from './ShinyText';
 import BorderGlow from './BorderGlow';
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
   const links = ['About', 'Menu', 'Gallery', 'Events', 'Location'];
+
+  // Prevent scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [isOpen]);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
     <motion.nav
@@ -16,11 +31,13 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0 cursor-pointer">
-            <img
-              src="/logo.png"
-              alt="Three O'Clock Cafe"
-              className="h-12 w-auto invert brightness-200"
-            />
+            <a href="/">
+              <img
+                src="/logo.png"
+                alt="Three O'Clock Cafe"
+                className="h-12 w-auto invert brightness-200"
+              />
+            </a>
           </div>
 
           {/* Desktop Menu */}
@@ -59,7 +76,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile menu button & Book Slot CTA */}
+          {/* CTAs and Mobile Toggle */}
           <div className="flex items-center gap-4">
             <div className="hidden md:block">
               <BorderGlow
@@ -85,16 +102,55 @@ export default function Navbar() {
               </BorderGlow>
             </div>
             
+            {/* Mobile Menu Toggle */}
             <div className="md:hidden flex items-center">
-              <button className="text-[#eeebe2] hover:text-[#8f908a] focus:outline-none">
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
+              <button 
+                onClick={toggleMenu}
+                className="text-cream p-2 focus:outline-none z-50"
+              >
+                {isOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed inset-0 bg-coffee z-40 flex flex-col items-center justify-center space-y-8 md:hidden text-center"
+          >
+            {links.map((link) => (
+              <motion.a
+                key={link}
+                href={link === 'Events' ? '/events' : `/#${link.toLowerCase()}`}
+                onClick={toggleMenu}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-3xl font-bold text-cream tracking-[0.2em] uppercase hover:text-burnt-orange transition-colors"
+                transition={{ delay: 0.1 }}
+              >
+                {link}
+              </motion.a>
+            ))}
+            <div className="pt-8">
+              <a
+                href="https://www.swiggy.com/restaurants/1339878/dineout"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-10 py-4 bg-burnt-orange text-white rounded-full font-black text-sm uppercase tracking-[0.2em] shadow-xl"
+              >
+                Book Slot
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }

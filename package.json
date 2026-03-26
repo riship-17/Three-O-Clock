@@ -12,6 +12,7 @@
     "@emailjs/browser": "^4.4.1",
     "@studio-freight/react-lenis": "^0.0.47",
     "clsx": "^2.1.1",
+    "firebase": "^12.11.0",
     "framer-motion": "^11.13.1",
     "gsap": "^3.14.2",
     "leaflet": "^1.9.4",
