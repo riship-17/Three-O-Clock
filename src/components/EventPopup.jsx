@@ -19,13 +19,24 @@ export default function EventPopup() {
   const [showBooking, setShowBooking] = useState(false);
 
   useEffect(() => {
+    console.log('[EventPopup] Component mounted');
     const dismissedAt = localStorage.getItem(DISMISSED_KEY);
+    
     if (dismissedAt) {
       const daysSince = (Date.now() - parseInt(dismissedAt)) / (1000 * 60 * 60 * 24);
+      console.log(`[EventPopup] Dismissed recently: ${daysSince.toFixed(2)} days ago (Expiry: ${DISMISSED_EXPIRY_DAYS} days)`);
       if (daysSince < DISMISSED_EXPIRY_DAYS) return;
+      
+      console.log('[EventPopup] Dismissed state expired, clearing.');
       localStorage.removeItem(DISMISSED_KEY);
     }
-    const timer = setTimeout(() => setIsVisible(true), 2000);
+
+    console.log('[EventPopup] Starting 2s visibility timer...');
+    const timer = setTimeout(() => {
+      console.log('[EventPopup] Setting isVisible to true');
+      setIsVisible(true);
+    }, 2000);
+    
     return () => clearTimeout(timer);
   }, []);
 
