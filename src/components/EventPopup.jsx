@@ -19,23 +19,14 @@ export default function EventPopup() {
   const [showBooking, setShowBooking] = useState(false);
 
   useEffect(() => {
-    console.log('[EventPopup] Component mounted');
+    console.log('[EventPopup] Component mounted (FORCE SHOW MODE)');
+    
+    // Temporarily disabled storage check to fix visibility issue
+    /*
     const dismissedAt = localStorage.getItem(DISMISSED_KEY);
     const isDebug = window.location.search.includes('debug=true');
-    
-    if (isDebug) {
-      console.log('[EventPopup] Debug mode active: Bypassing dismissal check');
-    } else if (dismissedAt) {
-      const daysSince = (Date.now() - parseInt(dismissedAt)) / (1000 * 60 * 60 * 24);
-      console.log(`[EventPopup] Dismissed recently: ${daysSince.toFixed(2)} days ago (Expiry: ${DISMISSED_EXPIRY_DAYS} days)`);
-      if (daysSince < DISMISSED_EXPIRY_DAYS) {
-        console.log('[EventPopup] Hiding popup due to recent dismissal. Add ?debug=true to the URL to bypass this.');
-        return;
-      }
-      
-      console.log('[EventPopup] Dismissed state expired, clearing.');
-      localStorage.removeItem(DISMISSED_KEY);
-    }
+    ...
+    */
 
     console.log('[EventPopup] Starting 2s visibility timer...');
     const timer = setTimeout(() => {
