@@ -19,20 +19,9 @@ export default function EventPopup() {
   const [showBooking, setShowBooking] = useState(false);
 
   useEffect(() => {
-    console.log('[EventPopup] Component mounted (FORCE SHOW MODE)');
-    
-    // Temporarily disabled storage check to fix visibility issue
-    /*
-    const dismissedAt = localStorage.getItem(DISMISSED_KEY);
-    const isDebug = window.location.search.includes('debug=true');
-    ...
-    */
-
-    console.log('[EventPopup] Starting 2s visibility timer...');
     const timer = setTimeout(() => {
-      console.log('[EventPopup] Setting isVisible to true');
       setIsVisible(true);
-    }, 2000);
+    }, 1000);
     
     return () => clearTimeout(timer);
   }, []);

@@ -20,7 +20,6 @@ let analytics = null;
 export const initAnalytics = () => {
   if (typeof window !== "undefined" && !analytics) {
     analytics = getAnalytics(app);
-    console.log("[Firebase] Analytics initialized after consent.");
   }
   return analytics;
 };
