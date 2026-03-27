@@ -101,7 +101,7 @@ export default function Location() {
                 <h4 className="text-xl font-semibold text-cream mb-2">Hours</h4>
                 <p className="text-cream/70 font-light leading-relaxed">
                   Monday - Sunday<br/>
-                  4:00 PM – 3:00 AM
+                  8:00 AM – 3:00 AM
                 </p>
               </div>
 
