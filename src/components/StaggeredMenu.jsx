@@ -398,7 +398,7 @@ export const StaggeredMenu = ({
             type="button"
           >
             <span
-              className="sm-toggle-textWrap relative inline-block h-[1em] overflow-hidden whitespace-nowrap w-[var(--sm-toggle-width,auto)] min-w-[var(--sm-toggle-width,auto)] uppercase tracking-widest text-[11px] font-black"
+              className="sm-toggle-textWrap relative inline-block h-[1em] overflow-hidden whitespace-nowrap w-[var(--sm-toggle-width,auto)] min-w-[var(--sm-toggle-width,auto)] uppercase tracking-widest text-[13px] font-black"
               aria-hidden="true"
             >
               <span ref={textInnerRef} className="sm-toggle-textInner flex flex-col leading-none">
@@ -412,7 +412,7 @@ export const StaggeredMenu = ({
 
             <span
               ref={iconRef}
-              className="sm-icon relative w-[16px] h-[16px] shrink-0 inline-flex items-center justify-center [will-change:transform]"
+              className="sm-icon relative w-[20px] h-[20px] shrink-0 inline-flex items-center justify-center [will-change:transform]"
               aria-hidden="true"
             >
               <span
@@ -493,7 +493,7 @@ export const StaggeredMenu = ({
 .sm-scope .staggered-menu-header > * { pointer-events: auto; }
 .sm-scope .sm-logo { display: flex; align-items: center; user-select: none; transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1); }
 .sm-scope .sm-logo:hover { transform: scale(1.05); }
-.sm-scope .sm-logo-img { display: block; height: 48px; width: auto; object-fit: contain; }
+.sm-scope .sm-logo-img { display: block; height: 56px; width: auto; object-fit: contain; }
 .sm-scope .sm-toggle { position: relative; display: inline-flex; align-items: center; gap: 0.8rem; background: transparent; border: none; cursor: pointer; color: #eeebe2; font-weight: 500; line-height: 1; overflow: visible; }
 .sm-scope .sm-toggle:focus-visible { outline: 2px solid #ffffffaa; outline-offset: 4px; border-radius: 4px; }
 .sm-scope .sm-toggle-textWrap { position: relative; display: inline-block; height: 1em; overflow: hidden; white-space: nowrap; width: var(--sm-toggle-width, auto); min-width: var(--sm-toggle-width, auto); }

@@ -61,38 +61,38 @@ export default function CookieBanner() {
               {/* Text Content */}
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-cream/10 flex items-center justify-center text-cream shadow-inner">
-                    <Cookie size={26} />
+                  <div className="w-14 h-14 rounded-2xl bg-cream/10 flex items-center justify-center text-cream shadow-inner">
+                    <Cookie size={30} />
                   </div>
-                  <h3 className="text-cream font-black text-sm uppercase tracking-[0.4em]">
+                  <h3 className="text-cream font-black text-lg uppercase tracking-[0.4em]">
                     Digital Rituals
                   </h3>
                 </div>
                 
-                <p className="text-cream/80 font-sans text-base md:text-lg leading-relaxed">
+                <p className="text-cream/80 font-sans text-lg md:text-xl leading-relaxed">
                   We use cookies and Firebase Analytics to understand your journey through our late-night brew. 
                   Accepting helps us refine the experience.
                 </p>
 
-                <Link to="/privacy-policy" className="inline-block text-cream hover:text-white underline underline-offset-8 transition-all font-bold text-sm uppercase tracking-widest">
+                <Link to="/privacy-policy" className="inline-block text-cream hover:text-white underline underline-offset-8 transition-all font-bold text-base uppercase tracking-widest">
                   Read Privacy Policy
                 </Link>
               </div>
 
               {/* High-Visibility Action Buttons */}
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-5">
                 <button
                   onClick={handleAccept}
-                  className="w-full py-5 rounded-2xl bg-cream text-charcoal font-black tracking-[0.25em] uppercase text-xs shadow-[0_10px_30px_rgba(238,235,226,0.3)] hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                  className="w-full py-6 rounded-2xl bg-cream text-charcoal font-black tracking-[0.25em] uppercase text-sm shadow-[0_10px_30px_rgba(238,235,226,0.3)] hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
                 >
-                  Accept All Cookies
+                  Accept All
                 </button>
                 <div className="flex items-center justify-center pt-2">
                   <button
                     onClick={handleDecline}
-                    className="text-cream/40 hover:text-cream/80 font-bold tracking-[0.2em] uppercase text-[10px] transition-all duration-300 flex items-center gap-2"
+                    className="text-cream/40 hover:text-cream/80 font-bold tracking-[0.2em] uppercase text-xs transition-all duration-300 flex items-center gap-2"
                   >
-                    <span>Decline optional tracking</span>
+                    <span>Decline</span>
                   </button>
                 </div>
               </div>
