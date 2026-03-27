@@ -49,49 +49,52 @@ export default function CookieBanner() {
       <AnimatePresence>
         {isVisible && (
           <motion.div
-            initial={{ y: "100%", opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: "100%", opacity: 0 }}
+            initial={{ x: "100%", opacity: 0, y: 20 }}
+            animate={{ x: 0, opacity: 1, y: 0 }}
+            exit={{ x: "100%", opacity: 0, y: 20 }}
             transition={{ type: "spring", damping: 30, stiffness: 200 }}
-            className="fixed bottom-0 left-0 w-full z-[100] p-4 md:p-8"
+            className="fixed bottom-0 right-0 md:bottom-10 md:right-10 w-full md:w-[500px] z-[100] p-4 md:p-0"
           >
-            {/* Sleek Theme-Matched Card */}
-            <div className="max-w-6xl mx-auto bg-charcoal/90 backdrop-blur-xl border border-cream/10 rounded-[28px] md:rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col md:flex-row items-center justify-between p-7 md:p-10 gap-8">
+            {/* High-Impact Floating Card */}
+            <div className="bg-charcoal/95 backdrop-blur-2xl border border-cream/20 rounded-[32px] shadow-[0_30px_70px_rgba(0,0,0,0.7)] overflow-hidden p-8 md:p-10 flex flex-col gap-8">
               
               {/* Text Content */}
-              <div className="flex-1 text-center md:text-left space-y-3">
-                <div className="flex justify-center md:justify-start items-center gap-3 mb-1">
-                  <div className="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center text-cream">
-                    <Cookie size={22} />
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-cream/10 flex items-center justify-center text-cream shadow-inner">
+                    <Cookie size={26} />
                   </div>
-                  <h3 className="text-cream font-black text-xs uppercase tracking-[0.3em]">
-                    Privacy & Cookies
+                  <h3 className="text-cream font-black text-sm uppercase tracking-[0.4em]">
+                    Digital Rituals
                   </h3>
                 </div>
                 
-                <p className="text-cream/60 font-sans text-sm md:text-base leading-relaxed max-w-2xl">
-                  We use cookies and Firebase Analytics to refine your experience. 
-                  By accepting, you help us brew a better digital ritual for the night.
-                  <Link to="/privacy-policy" className="ml-2 text-cream/90 hover:text-cream underline underline-offset-4 transition-colors font-semibold">
-                    View Policy
-                  </Link>
+                <p className="text-cream/80 font-sans text-base md:text-lg leading-relaxed">
+                  We use cookies and Firebase Analytics to understand your journey through our late-night brew. 
+                  Accepting helps us refine the experience.
                 </p>
+
+                <Link to="/privacy-policy" className="inline-block text-cream hover:text-white underline underline-offset-8 transition-all font-bold text-sm uppercase tracking-widest">
+                  Read Privacy Policy
+                </Link>
               </div>
 
-              {/* Theme-Matched Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto shrink-0">
-                <button
-                  onClick={handleDecline}
-                  className="px-10 py-4 rounded-2xl border border-cream/20 text-cream/40 font-bold tracking-[0.2em] uppercase text-[10px] hover:bg-cream/5 hover:text-cream/80 hover:border-cream/40 transition-all duration-300"
-                >
-                  Decline
-                </button>
+              {/* High-Visibility Action Buttons */}
+              <div className="flex flex-col gap-4">
                 <button
                   onClick={handleAccept}
-                  className="px-10 py-4 rounded-2xl bg-cream text-charcoal font-black tracking-[0.2em] uppercase text-[10px] shadow-xl hover:bg-linen hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                  className="w-full py-5 rounded-2xl bg-cream text-charcoal font-black tracking-[0.25em] uppercase text-xs shadow-[0_10px_30px_rgba(238,235,226,0.3)] hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
                 >
-                  Accept All
+                  Accept All Cookies
                 </button>
+                <div className="flex items-center justify-center pt-2">
+                  <button
+                    onClick={handleDecline}
+                    className="text-cream/40 hover:text-cream/80 font-bold tracking-[0.2em] uppercase text-[10px] transition-all duration-300 flex items-center gap-2"
+                  >
+                    <span>Decline optional tracking</span>
+                  </button>
+                </div>
               </div>
 
             </div>
@@ -99,7 +102,7 @@ export default function CookieBanner() {
         )}
       </AnimatePresence>
 
-      {/* Sleek Floating Settings Trigger */}
+      {/* Sleek Floating Settings Trigger (Alternative side for better balance) */}
       <AnimatePresence>
         {showSettingsBtn && (
           <motion.button
@@ -109,9 +112,9 @@ export default function CookieBanner() {
             whileHover={{ scale: 1.1, rotate: 10 }}
             whileTap={{ scale: 0.95 }}
             onClick={openBanner}
-            className="fixed bottom-8 left-8 z-[90] w-12 h-12 bg-charcoal/60 backdrop-blur-md border border-cream/15 rounded-2xl flex items-center justify-center text-cream/60 shadow-2xl hover:bg-charcoal/80 hover:text-cream hover:border-cream/30 transition-all duration-300 group"
+            className="fixed bottom-10 left-10 z-[90] w-14 h-14 bg-charcoal/80 backdrop-blur-md border border-cream/20 rounded-[20px] flex items-center justify-center text-cream/70 shadow-2xl hover:bg-charcoal hover:text-cream hover:border-cream/40 transition-all duration-300 group"
           >
-            <Cookie size={20} className="group-hover:animate-pulse" />
+            <Cookie size={24} className="group-hover:animate-pulse" />
           </motion.button>
         )}
       </AnimatePresence>
