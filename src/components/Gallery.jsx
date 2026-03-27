@@ -14,7 +14,7 @@ const aestheticItems = [
 export default function Gallery() {
   return (
     <section id="gallery" className="aesthetic-section py-24 md:py-32 bg-[#fdfcf8] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-6">
         
         {/* Header */}
         <div className="aesthetic-header text-center mb-16 md:mb-24 space-y-4 relative z-10">
