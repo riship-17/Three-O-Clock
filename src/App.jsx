@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import CookieBanner from './components/CookieBanner';
 
 const EventsTimeline = lazy(() => import('./pages/EventsTimeline'));
 const Footer = lazy(() => import('./components/Footer'));
@@ -21,7 +23,9 @@ function App() {
             </Suspense>
           } 
         />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
+      <CookieBanner />
       <Suspense fallback={null}>
         <Footer />
       </Suspense>
