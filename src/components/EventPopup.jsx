@@ -8,7 +8,7 @@ const DISMISSED_EXPIRY_DAYS = 3;
 
 const EVENT_DATA = {
   title: 'An Evening to Remember',
-  date: 'Saturday, 3rd April 2025',
+  date: 'Friday, 3rd April 2026',
 };
 
 const POSTER_URL =

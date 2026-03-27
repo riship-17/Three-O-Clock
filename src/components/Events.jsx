@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import BookingModal from './BookingModal';
+import CountUp from './CountUp';
 
 const UPCOMING_EVENT = {
   title: "An Evening to Remember",
-  date: "Saturday, 3rd April 2025",
-  time: "7:00 PM Onwards",
+  date: "Friday, 3rd April 2026", // Updated to 2026 for active countdown
+  time: "5:00 PM Onwards",
+  targetDate: "2026-04-03T17:00:00",
   venue: "Three O'Clock Café, Gandhinagar",
   description: "An exclusive late-night gathering curated for those who appreciate the finer things — live music, artisanal Vietnamese brews, and an atmosphere that feels like a secret you'll want to share.",
   poster: "https://res.cloudinary.com/dgry55pvk/image/upload/v1774531468/SOCIAL_MEDIA_DESIGN_3.jpg_k60hoz.jpg",
@@ -14,6 +16,39 @@ const UPCOMING_EVENT = {
 
 export default function Events() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  const calculateTimeLeft = useCallback(() => {
+    const difference = +new Date(UPCOMING_EVENT.targetDate) - +new Date();
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    } else {
+      timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+    return timeLeft;
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [calculateTimeLeft]);
+
+  const timeSegments = [
+    { label: 'Days', value: timeLeft.days },
+    { label: 'Hours', value: timeLeft.hours },
+    { label: 'Mins', value: timeLeft.minutes },
+    { label: 'Secs', value: timeLeft.seconds },
+  ];
 
   return (
     <section id="events" className="py-24 md:py-36 bg-charcoal relative overflow-hidden">
@@ -59,8 +94,27 @@ export default function Events() {
               className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               loading="lazy"
             />
-            {/* Bottom fade into charcoal on mobile */}
-            <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-charcoal to-transparent lg:hidden" />
+            {/* Countdown Overlay on Poster */}
+            <div className="absolute inset-x-0 bottom-0 p-8 lg:p-12 bg-gradient-to-t from-charcoal via-charcoal/60 to-transparent">
+              <div className="space-y-4">
+                <p className="text-stone text-[10px] uppercase tracking-[0.4em] font-black">Book Fast · Time Remaining</p>
+                <div className="grid grid-cols-4 gap-4 max-w-sm">
+                  {timeSegments.map((segment, idx) => (
+                    <div key={idx} className="flex flex-col items-center">
+                      <div className="text-3xl md:text-4xl font-black text-linen mb-1 font-mono">
+                        <CountUp 
+                          from={segment.value + 1} 
+                          to={segment.value} 
+                          duration={0.5} 
+                          startWhen={true} 
+                        />
+                      </div>
+                      <span className="text-[10px] uppercase tracking-widest text-stone font-bold">{segment.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Right — Event Details */}
