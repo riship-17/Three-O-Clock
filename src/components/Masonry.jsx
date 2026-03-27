@@ -58,8 +58,8 @@ const Masonry = ({
   colorShiftOnHover = false
 }) => {
   const columns = useMedia(
-    ['(min-width:1280px)', '(min-width:1024px)', '(min-width:768px)', '(min-width:640px)'],
-    [5, 4, 3, 2],
+    ['(min-width:1536px)', '(min-width:1280px)', '(min-width:1024px)', '(min-width:768px)'],
+    [4, 3, 3, 2],
     1
   );
 
