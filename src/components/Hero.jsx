@@ -65,7 +65,7 @@ export default function Hero() {
             initial="initial"
             whileHover="hover"
             whileTap={{ scale: 0.98 }}
-            className="group relative px-10 py-4 sm:px-14 sm:py-5 overflow-hidden rounded-full border-2 border-stone text-stone font-black text-xs sm:text-sm uppercase tracking-[0.2em] transition-colors duration-300 w-full sm:w-auto flex items-center justify-center box-border"
+            className="group relative px-10 py-4 sm:px-14 sm:py-5 overflow-hidden rounded-full border-2 border-white text-white font-black text-xs sm:text-sm uppercase tracking-[0.2em] transition-colors duration-300 w-full sm:w-auto flex items-center justify-center box-border bg-black/10 backdrop-blur-[2px]"
           >
             {/* Fill Layer */}
             <motion.div
@@ -74,13 +74,13 @@ export default function Hero() {
                 hover: { y: 0 }
               }}
               transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
-              className="absolute inset-0 bg-stone z-0"
+              className="absolute inset-0 bg-white z-0"
             />
             {/* Text */}
             <motion.span 
               variants={{
-                initial: { color: "#8f908a" },
-                hover: { color: "#3c3c3c" }
+                initial: { color: "#ffffff" },
+                hover: { color: "#000000" }
               }}
               transition={{ duration: 0.3 }}
               className="relative z-10"
@@ -94,7 +94,7 @@ export default function Hero() {
             initial="initial"
             whileHover="hover"
             whileTap={{ scale: 0.98 }}
-            className="group relative px-10 py-4 sm:px-14 sm:py-5 overflow-hidden rounded-full border-2 border-linen text-linen font-black text-xs sm:text-sm uppercase tracking-[0.2em] transition-colors duration-300 w-full sm:w-auto flex items-center justify-center box-border"
+            className="group relative px-10 py-4 sm:px-14 sm:py-5 overflow-hidden rounded-full border-2 border-white/60 text-white/90 font-black text-xs sm:text-sm uppercase tracking-[0.2em] transition-colors duration-300 w-full sm:w-auto flex items-center justify-center box-border bg-black/5 backdrop-blur-[2px]"
           >
             {/* Fill Layer */}
             <motion.div
@@ -103,13 +103,13 @@ export default function Hero() {
                 hover: { y: 0 }
               }}
               transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
-              className="absolute inset-0 bg-linen z-0"
+              className="absolute inset-0 bg-white z-0"
             />
             {/* Text */}
             <motion.span 
               variants={{
-                initial: { color: "#eeebe2" },
-                hover: { color: "#3c3c3c" }
+                initial: { color: "#ffffff" },
+                hover: { color: "#000000" }
               }}
               transition={{ duration: 0.3 }}
               className="relative z-10"
