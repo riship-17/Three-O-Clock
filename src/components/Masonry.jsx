@@ -58,9 +58,9 @@ const Masonry = ({
   colorShiftOnHover = false
 }) => {
   const columns = useMedia(
-    ['(min-width:1536px)', '(min-width:1280px)', '(min-width:1024px)', '(min-width:640px)'],
+    ['(min-width:1536px)', '(min-width:1280px)', '(min-width:1024px)', '(min-width:768px)'],
     [4, 3, 3, 2],
-    1 // Default to 1 column for mobile screens (<640px)
+    1
   );
 
   const [containerRef, { width }] = useMeasure();
@@ -143,7 +143,7 @@ const Masonry = ({
       gsap.to(`[data-key="${id}"]`, { scale: 1, duration: 0.3, ease: 'power2.out' });
     }
   };
-  
+
   const containerHeight = grid.length ? Math.max(...grid.map(i => i.y + i.h)) : '100vh';
 
   return (
@@ -162,7 +162,7 @@ const Masonry = ({
             style={{ backgroundImage: `url('${item.img}')` }}
           >
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-               {item.caption && <span className="text-white text-xs font-bold tracking-widest uppercase text-center">{item.caption}</span>}
+              {item.caption && <span className="text-white text-xs font-bold tracking-widest uppercase text-center">{item.caption}</span>}
             </div>
           </div>
         </div>

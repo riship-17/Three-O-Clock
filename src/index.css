@@ -1,37 +1,39 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
-  }
   body {
-    @apply bg-coffee text-cream antialiased selection:bg-burnt-orange selection:text-cream overflow-x-hidden min-h-screen;
+    @apply bg-coffee text-cream antialiased selection:bg-burnt-orange selection:text-cream;
     font-family: 'Montserrat', system-ui, sans-serif;
   }
-  img, video {
-    @apply max-w-full h-auto block;
-  }
-  * {
-    @apply box-border;
-  }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply tracking-tight;
     font-family: 'Oswald', 'Space Grotesk', sans-serif;
   }
+
   /* Apply Iosevka Charon to small text/labels globally */
-  .text-xs, .text-sm, label, button, .tracking-widest {
+  .text-xs,
+  .text-sm,
+  label,
+  button,
+  .tracking-widest {
     font-family: 'Iosevka Charon', 'Iosevka Charon Mono', monospace;
   }
 }
 
 .grain-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   z-index: 50;
   opacity: 0.04;
@@ -42,12 +44,15 @@
 html.lenis {
   height: auto;
 }
+
 .lenis.lenis-smooth {
   scroll-behavior: auto;
 }
+
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
 }
+
 .lenis.lenis-stopped {
   overflow: hidden;
 }
@@ -60,25 +65,37 @@ html.lenis {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.98); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Custom Popup Styling */
 .custom-popup .leaflet-popup-content-wrapper {
-  background-color: #eeebe2 !important; /* Linen (Off-white) */
-  color: #3c3c3c !important; /* Charcoal */
+  background-color: #eeebe2 !important;
+  /* Linen (Off-white) */
+  color: #3c3c3c !important;
+  /* Charcoal */
   border-radius: 14px !important;
   padding: 0 !important;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(143,144,138,0.1) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(143, 144, 138, 0.1) !important;
 }
+
 .custom-popup .leaflet-popup-tip {
   background-color: #eeebe2 !important;
 }
+
 .custom-popup .leaflet-popup-content {
   margin: 0 !important;
   width: auto !important;
 }
+
 /* Override internal leaflet link styling */
 .custom-popup a.leaflet-popup-close-button {
   color: #3c3c3c !important;
@@ -86,8 +103,10 @@ html.lenis {
   font-size: 20px !important;
   z-index: 10;
 }
+
 .custom-popup a.leaflet-popup-close-button:hover {
-  color: #8f908a !important; /* Stone */
+  color: #8f908a !important;
+  /* Stone */
 }
 
 /* --- Hero Section Exact Overrides --- */
@@ -108,7 +127,7 @@ html.lenis {
   position: absolute;
   inset: 0;
   /* Subtle dark gradient overlay instead of light grey */
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
   z-index: 0;
   pointer-events: none;
 }
