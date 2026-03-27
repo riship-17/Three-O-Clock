@@ -6,11 +6,11 @@ export default function Hero() {
   const scale = useTransform(scrollY, [0, 500], [1, 1.1]);
 
   return (
-    <section className="hero-section relative w-full h-screen min-h-[500px] flex items-center justify-center overflow-hidden bg-charcoal">
+    <section className="hero-section relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-charcoal px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24">
       {/* Background Video */}
       <div className="absolute inset-0 z-0 h-full w-full overflow-hidden">
         {/* Dark subtle gradient overlay */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/80 via-black/20 to-black/60" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/80 via-black/20 to-black/80" />
         
         <motion.div style={{ scale }} className="h-full w-full">
           <video 
@@ -35,7 +35,7 @@ export default function Hero() {
 
       {/* Hero Content */}
       <motion.div 
-        className="hero-content relative z-20 text-center px-4 max-w-5xl mx-auto"
+        className="hero-content relative z-20 text-center w-full max-w-7xl mx-auto"
         style={{ opacity }}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 1 }}
-          className="hero-heading text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-linen mb-6 drop-shadow-2xl tracking-tighter"
+          className="hero-heading text-fluid-3xl font-black text-linen mb-4 md:mb-6 drop-shadow-2xl tracking-tighter"
         >
           Three O'Clock Café
         </motion.h1>
@@ -53,19 +53,19 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 1 }}
-          className="text-base sm:text-xl md:text-2xl lg:text-3xl text-linen/90 mb-10 font-medium tracking-wide drop-shadow-lg max-w-3xl mx-auto leading-relaxed"
+          className="text-fluid-lg text-linen/90 mb-8 md:mb-10 font-medium tracking-wide drop-shadow-lg max-w-3xl mx-auto leading-relaxed"
         >
           Authentic Vietnamese Brews. <br className="sm:hidden" /> 
           Late Night Vibes. Aesthetic Space.
         </motion.p>
         
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mt-6">
           <motion.a 
             href="#menu"
             initial="initial"
             whileHover="hover"
             whileTap={{ scale: 0.98 }}
-            className="group relative px-10 py-4 sm:px-14 sm:py-5 overflow-hidden rounded-full border-2 border-white text-white font-black text-xs sm:text-sm uppercase tracking-[0.2em] transition-colors duration-300 w-full sm:w-auto flex items-center justify-center box-border bg-black/10 backdrop-blur-[2px]"
+            className="group relative w-full sm:w-auto px-6 lg:px-14 py-4 md:py-5 overflow-hidden rounded-full border-2 border-white text-white font-black text-sm uppercase tracking-[0.2em] transition-colors duration-300 flex items-center justify-center bg-black/10 backdrop-blur-[2px] min-h-[48px]"
           >
             {/* Fill Layer */}
             <motion.div
@@ -94,7 +94,7 @@ export default function Hero() {
             initial="initial"
             whileHover="hover"
             whileTap={{ scale: 0.98 }}
-            className="group relative px-10 py-4 sm:px-14 sm:py-5 overflow-hidden rounded-full border-2 border-white/60 text-white/90 font-black text-xs sm:text-sm uppercase tracking-[0.2em] transition-colors duration-300 w-full sm:w-auto flex items-center justify-center box-border bg-black/5 backdrop-blur-[2px]"
+            className="group relative w-full sm:w-auto px-6 lg:px-14 py-4 md:py-5 overflow-hidden rounded-full border-2 border-white/60 text-white/90 font-black text-sm uppercase tracking-[0.2em] transition-colors duration-300 flex items-center justify-center bg-black/5 backdrop-blur-[2px] min-h-[48px]"
           >
             {/* Fill Layer */}
             <motion.div
@@ -122,12 +122,12 @@ export default function Hero() {
 
       {/* Scroll Indicator */}
       <motion.div 
-        className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3"
+        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 md:gap-3"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <span className="text-[8px] sm:text-[10px] uppercase font-mono tracking-[0.4em] text-linen/60">Scroll</span>
-        <div className="w-[1px] h-10 sm:h-16 bg-gradient-to-b from-stone/80 to-transparent" />
+        <span className="text-[10px] uppercase font-mono tracking-[0.4em] text-linen/60">Scroll</span>
+        <div className="w-[1px] h-10 md:h-16 bg-gradient-to-b from-white/80 to-transparent" />
       </motion.div>
     </section>
   );

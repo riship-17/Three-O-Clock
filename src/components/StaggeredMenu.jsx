@@ -521,14 +521,14 @@ export const StaggeredMenu = ({
 .sm-scope .sm-panel-list[data-numbering] { counter-reset: smItem; }
 .sm-scope .sm-panel-list[data-numbering] .sm-panel-item::after { counter-increment: smItem; content: counter(smItem, decimal-leading-zero); position: absolute; top: 0.2em; right: 2.2em; font-size: 14px; font-weight: 900; color: var(--sm-accent, #8f908a); letter-spacing: 0.2em; pointer-events: none; user-select: none; opacity: var(--sm-num-opacity, 0); }
 @media (max-width: 1024px) { 
-    .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; padding: 8em 2em 3em 2em; } 
+    .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; padding: 7em 1.5em 3em 1.5em; } 
     .sm-scope .sm-prelayers { width: 100%; left: 0; right: 0; }
-    .sm-scope .sm-panel-item { font-size: 3.5rem; letter-spacing: -2px; }
+    .sm-scope .sm-panel-item { font-size: 3rem; letter-spacing: -2px; }
 }
 @media (max-width: 640px) { 
-    .sm-scope .sm-panel-item { font-size: 2.8rem; letter-spacing: -1px; }
-    .sm-scope .staggered-menu-header { padding: 1.5em; }
-    .sm-scope .sm-logo-img { height: 36px; }
+    .sm-scope .sm-panel-item { font-size: 2.2rem; letter-spacing: -1px; }
+    .sm-scope .staggered-menu-header { padding: 1em 1.5em; backdrop-filter: blur(12px); background: linear-gradient(to bottom, rgba(0,0,0,0.4), transparent); }
+    .sm-scope .sm-logo-img { height: 32px; }
 }
       `}</style>
     </div>

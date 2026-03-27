@@ -102,19 +102,19 @@ export default function Menu() {
         </div>
 
         {/* Featured Items Showcase */}
-        <div className="featured-items flex flex-col gap-20 md:gap-36 mb-24 max-w-6xl mx-auto">
+        <div className="featured-items flex flex-col gap-16 sm:gap-24 md:gap-36 mb-24 max-w-6xl mx-auto">
           {featuredItems.map((item, index) => {
             const isEven = index % 2 !== 0; // Alternating zig-zag
             return (
               <div 
                 key={item.id} 
-                className={`menu-item flex flex-col ${isEven ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-10 lg:gap-24`}
+                className={`menu-item flex flex-col ${isEven ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-8 md:gap-14 lg:gap-24`}
               >
                 {/* Image Side */}
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
                   className="w-full lg:w-1/2"
                 >
@@ -133,23 +133,23 @@ export default function Menu() {
                 <motion.div 
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-                  className="menu-item-content w-full lg:w-1/2 flex flex-col items-start px-2 lg:px-0"
+                  className="menu-item-content w-full lg:w-1/2 flex flex-col items-start px-2 sm:px-4 lg:px-0"
                 >
-                  <span className="menu-item-special inline-block px-5 py-2 mb-6 text-[10px] md:text-xs font-black tracking-[0.2em] uppercase rounded-full bg-[#E8DCC4] text-[#4B2E2E] shadow-sm">
+                  <span className="menu-item-special inline-block px-4 py-2 mb-4 text-[10px] md:text-xs font-black tracking-[0.2em] uppercase rounded-full bg-[#E8DCC4] text-[#4B2E2E] shadow-sm">
                     {item.specialty}
                   </span>
                   
-                  <h3 className="menu-item-title text-3xl md:text-5xl lg:text-6xl font-serif font-black tracking-tight mb-5 text-[#4B2E2E] leading-[1.05]">
+                  <h3 className="menu-item-title text-fluid-2xl font-serif font-black tracking-tight mb-4 text-[#4B2E2E] leading-tight">
                     {item.name}
                   </h3>
                   
-                  <p className="menu-item-description font-sans text-base md:text-lg lg:text-xl text-[#61615f] leading-relaxed mb-10 max-w-lg font-medium opacity-80">
+                  <p className="menu-item-description font-sans text-fluid-base text-[#61615f] leading-relaxed mb-8 max-w-lg font-medium opacity-80">
                     {item.description}
                   </p>
                   
-                  <button className="text-xs md:text-sm font-black tracking-[0.2em] uppercase text-[#4B2E2E] hover:text-[#2E1A1A] transition-all duration-300 flex items-center gap-2 group">
+                  <button className="text-[10px] sm:text-xs md:text-sm font-black tracking-[0.2em] uppercase text-[#4B2E2E] hover:text-[#2E1A1A] transition-all duration-300 flex items-center gap-2 group p-2 -ml-2">
                     Full Details
                     <ChevronRight size={18} className="group-hover:translate-x-2 transition-transform duration-300" />
                   </button>

@@ -4,9 +4,19 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
   body {
-    @apply bg-coffee text-cream antialiased selection:bg-burnt-orange selection:text-cream;
+    @apply bg-coffee text-cream antialiased selection:bg-burnt-orange selection:text-cream overflow-x-hidden min-h-screen;
     font-family: 'Montserrat', system-ui, sans-serif;
+  }
+  img, video {
+    @apply max-w-full h-auto block;
+  }
+  * {
+    @apply box-border;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply tracking-tight;

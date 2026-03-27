@@ -58,9 +58,9 @@ const Masonry = ({
   colorShiftOnHover = false
 }) => {
   const columns = useMedia(
-    ['(min-width:1536px)', '(min-width:1280px)', '(min-width:1024px)', '(min-width:768px)'],
+    ['(min-width:1536px)', '(min-width:1280px)', '(min-width:1024px)', '(min-width:640px)'],
     [4, 3, 3, 2],
-    1
+    1 // Default to 1 column for mobile screens (<640px)
   );
 
   const [containerRef, { width }] = useMeasure();
