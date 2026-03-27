@@ -9,7 +9,7 @@ const firebaseConfig = {
   storageBucket: "three-o-clock.firebasestorage.app",
   messagingSenderId: "482858672835",
   appId: "1:482858672835:web:0f288d969a75e25a1fb876",
-  measurementId: "G-XXXXXXXXXX" // REPLACE THIS with your actual Google Analytics Measurement ID
+  measurementId: "G-GX81X50JX2" 
 };
 
 // Initialize Firebase Core
