@@ -94,27 +94,8 @@ export default function Events() {
               className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               loading="lazy"
             />
-            {/* Countdown Overlay on Poster */}
-            <div className="absolute inset-x-0 bottom-0 p-8 lg:p-12 bg-gradient-to-t from-charcoal via-charcoal/60 to-transparent">
-              <div className="space-y-4">
-                <p className="text-stone text-[10px] uppercase tracking-[0.4em] font-black">Book Fast · Time Remaining</p>
-                <div className="grid grid-cols-4 gap-4 max-w-sm">
-                  {timeSegments.map((segment, idx) => (
-                    <div key={idx} className="flex flex-col items-center">
-                      <div className="text-3xl md:text-4xl font-black text-linen mb-1 font-mono">
-                        <CountUp 
-                          from={segment.value + 1} 
-                          to={segment.value} 
-                          duration={0.5} 
-                          startWhen={true} 
-                        />
-                      </div>
-                      <span className="text-[10px] uppercase tracking-widest text-stone font-bold">{segment.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+            {/* Ambient vignette on image */}
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent pointer-events-none" />
           </div>
 
           {/* Right — Event Details */}
@@ -157,19 +138,41 @@ export default function Events() {
               </div>
             </div>
 
-            {/* CTA */}
-            <div className="mt-10 space-y-4">
-              <motion.button
-                onClick={() => setIsModalOpen(true)}
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-5 bg-linen text-charcoal rounded-2xl font-black text-sm uppercase tracking-[0.2em] shadow-[0_10px_30px_rgba(238,235,226,0.15)] hover:bg-white hover:shadow-[0_15px_40px_rgba(238,235,226,0.25)] transition-all duration-300"
-              >
-                Reserve Your Seat →
-              </motion.button>
-              <p className="text-center text-linen/25 text-[10px] uppercase tracking-widest font-semibold">
-                Limited Capacity · First Come, First Served
-              </p>
+            {/* Countdown & CTA */}
+            <div className="mt-10 space-y-8">
+              {/* Countdown Timer */}
+              <div className="space-y-4">
+                <p className="text-stone text-[10px] uppercase tracking-[0.4em] font-black">Book Fast · Time Remaining</p>
+                <div className="grid grid-cols-4 gap-4">
+                  {timeSegments.map((segment, idx) => (
+                    <div key={idx} className="flex flex-col items-center p-4 rounded-2xl bg-linen/5 border border-linen/10">
+                      <div className="text-2xl md:text-3xl font-black text-linen mb-1 font-mono">
+                        <CountUp 
+                          from={segment.value + 1} 
+                          to={segment.value} 
+                          duration={0.5} 
+                          startWhen={true} 
+                        />
+                      </div>
+                      <span className="text-[10px] uppercase tracking-widest text-stone font-bold">{segment.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <motion.button
+                  onClick={() => setIsModalOpen(true)}
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-5 bg-linen text-charcoal rounded-2xl font-black text-sm uppercase tracking-[0.2em] shadow-[0_10px_30px_rgba(238,235,226,0.15)] hover:bg-white hover:shadow-[0_15px_40px_rgba(238,235,226,0.25)] transition-all duration-300"
+                >
+                  Reserve Your Seat →
+                </motion.button>
+                <p className="text-center text-linen/25 text-[10px] uppercase tracking-widest font-semibold">
+                  Limited Capacity · First Come, First Served
+                </p>
+              </div>
             </div>
           </div>
         </motion.div>
