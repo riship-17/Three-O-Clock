@@ -17,20 +17,18 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 pointer-events-none">
-      <StaggeredMenu
-        position="right"
-        items={menuItems}
-        socialItems={socialItems}
-        displaySocials={true}
-        displayItemNumbering={true}
-        menuButtonColor="#eeebe2"
-        openMenuButtonColor="#eeebe2"
-        changeMenuColorOnOpen={true}
-        logoUrl="/logo.png"
-        accentColor="#8f908a"
-        isFixed={false} // Use the relative positioning within the nav
-      />
-    </nav>
+    <StaggeredMenu
+      position="right"
+      items={menuItems}
+      socialItems={socialItems}
+      displaySocials={true}
+      displayItemNumbering={true}
+      menuButtonColor="#eeebe2"
+      openMenuButtonColor="#eeebe2"
+      changeMenuColorOnOpen={true}
+      logoUrl="/logo.png"
+      accentColor="#8f908a"
+      isFixed={true}
+    />
   );
 }
