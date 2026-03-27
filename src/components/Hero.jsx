@@ -62,20 +62,60 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
           <motion.a 
             href="#menu"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="hero-button px-10 py-4 sm:px-14 sm:py-5 bg-stone text-charcoal text-center rounded-full font-black text-xs sm:text-sm uppercase tracking-[0.2em] shadow-2xl transition-all duration-300 w-full sm:w-auto"
+            initial="initial"
+            whileHover="hover"
+            whileTap={{ scale: 0.98 }}
+            className="group relative px-10 py-4 sm:px-14 sm:py-5 overflow-hidden rounded-full border-2 border-stone text-stone font-black text-xs sm:text-sm uppercase tracking-[0.2em] transition-colors duration-300 w-full sm:w-auto flex items-center justify-center box-border"
           >
-            Explore Menu
+            {/* Fill Layer */}
+            <motion.div
+              variants={{
+                initial: { y: "100%" },
+                hover: { y: 0 }
+              }}
+              transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
+              className="absolute inset-0 bg-stone z-0"
+            />
+            {/* Text */}
+            <motion.span 
+              variants={{
+                initial: { color: "#8f908a" },
+                hover: { color: "#3c3c3c" }
+              }}
+              transition={{ duration: 0.3 }}
+              className="relative z-10"
+            >
+              Explore Menu
+            </motion.span>
           </motion.a>
           
           <motion.a 
             href="#location"
-            whileHover={{ scale: 1.05, borderColor: '#eeebe2' }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 sm:px-14 sm:py-5 bg-transparent border-2 border-linen/20 text-linen text-center rounded-full font-black text-xs sm:text-sm uppercase tracking-[0.2em] hover:bg-linen/10 backdrop-blur-md transition-all duration-300 w-full sm:w-auto"
+            initial="initial"
+            whileHover="hover"
+            whileTap={{ scale: 0.98 }}
+            className="group relative px-10 py-4 sm:px-14 sm:py-5 overflow-hidden rounded-full border-2 border-linen text-linen font-black text-xs sm:text-sm uppercase tracking-[0.2em] transition-colors duration-300 w-full sm:w-auto flex items-center justify-center box-border"
           >
-            Visit Us
+            {/* Fill Layer */}
+            <motion.div
+              variants={{
+                initial: { y: "100%" },
+                hover: { y: 0 }
+              }}
+              transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
+              className="absolute inset-0 bg-linen z-0"
+            />
+            {/* Text */}
+            <motion.span 
+              variants={{
+                initial: { color: "#eeebe2" },
+                hover: { color: "#3c3c3c" }
+              }}
+              transition={{ duration: 0.3 }}
+              className="relative z-10"
+            >
+              Visit Us
+            </motion.span>
           </motion.a>
         </div>
       </motion.div>
