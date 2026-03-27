@@ -43,18 +43,7 @@ export default function Footer() {
           >
             Instagram
           </a>
-          <a
-            href="#"
-            className="text-cream/60 hover:text-burnt-orange transition-colors text-sm tracking-wider uppercase"
-          >
-            Facebook
-          </a>
-          <a
-            href="#"
-            className="text-cream/60 hover:text-burnt-orange transition-colors text-sm tracking-wider uppercase"
-          >
-            Twitter
-          </a>
+        
         </motion.div>
 
         <div className="w-full h-px bg-gradient-to-r from-transparent via-cream/20 to-transparent mb-8" />
