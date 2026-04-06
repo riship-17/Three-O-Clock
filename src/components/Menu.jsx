@@ -5,32 +5,35 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 const featuredItems = [
   {
     id: 1,
-    name: 'Mushroom Bánh Mì',
-    description: 'A Vietnamese street-style sandwich filled with sautéed mushrooms, fresh herbs, and crisp vegetables in a toasted baguette.',
-    specialty: 'Signature Vietnamese Street Flavor',
-    image: '/29recipehealth-superJumbo.jpg'
+    name: 'Vietnamese Coffee with Condensed Milk',
+    description: 'The drink that started it all. Strong Vietnamese oolong-roasted coffee dripped slow through a phin filter, sweetened with silky condensed milk — bold, rich, and unapologetically authentic. One phin. One pour. A hundred years of Vietnamese coffee culture.',
+    specialty: "The Original Three O'Clock Ritual",
+    image: 'https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_900/v1774888421/VIETNAMESE_COFFEE_WITH_CONDENSED_MILK_bnmlsm.png'
   },
   {
     id: 2,
-    name: 'BBQ Paneer Veggies',
-    description: 'Smoky grilled paneer tossed with vibrant vegetables, infused with bold BBQ flavors and a hint of spice.',
-    specialty: "Chef's Smoky Special",
-    image: '/download (9).jpeg'
+    name: 'Espresso Tiramisu',
+    description: 'Layers of espresso-soaked sponge, velvety mascarpone, and a dusting of dark cocoa — our Tiramisu is built for the ones who take their coffee seriously, even in dessert form. Espresso soaked. Mascarpone layered. Worth every late night.',
+    specialty: 'A Little Italy in Your Moment',
+    image: 'https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_900/v1774888340/ESPRESSO_TIRAMISU_qgs0jy.png'
   },
   {
     id: 3,
-    name: 'Vietnamese Coffee with Milk',
-    description: 'A rich, slow-brewed coffee using a traditional phin filter, blended with sweet condensed milk for a bold yet smooth taste.',
-    specialty: 'Authentic Phin Brew',
-    image: '/download (10).jpeg'
+    name: 'Oolong Pandan Tea',
+    description: "Rooted in Southeast Asian tradition, our Oolong Pandan is slow-brewed with whole pandan leaves and premium Vietnamese oolong — earthy, fragrant, and made for the quiet hours. Pandan meets oolong. Vietnam meets your 3 AM.",
+    specialty: "Vietnam's Favorite Pairing",
+    image: 'https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_900/v1774852438/OOLONG_PANDAN_TEA_v6djdi.png'
   }
 ];
 
 const menuGallery = [
-  '/2026-03-07 (4).webp',
-  '/2026-03-07 (3).webp',
-  '/2026-03-07 (2).webp',
-  '/2026-03-07 (1).webp'
+  'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959548/Screenshot_2026-03-31_at_5.47.20_PM_tsvf50.png',
+  'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959539/Screenshot_2026-03-31_at_5.47.29_PM_ambh9w.png',
+  'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959556/Screenshot_2026-03-31_at_5.47.37_PM_wnwcw7.png',
+  'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959536/Screenshot_2026-03-31_at_5.47.44_PM_fpeokb.png',
+
+  'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959543/Screenshot_2026-03-31_at_5.47.50_PM_qkg3lk.png',
+  'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959563/Screenshot_2026-03-31_at_5.47.54_PM_bd6mud.png'
 ];
 
 export default function Menu() {
@@ -79,13 +82,13 @@ export default function Menu() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="menu-header text-center mb-16 md:mb-28 space-y-4">
+        <div className="text-center mb-16 md:mb-28 space-y-4">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="menu-title text-5xl md:text-7xl lg:text-8xl font-serif font-black tracking-tighter text-[#4B2E2E]"
+            className="text-5xl md:text-7xl lg:text-8xl font-serif font-black tracking-tighter text-[#4B2E2E]"
           >
             Chef's Specialties
           </motion.h2>
@@ -95,66 +98,86 @@ export default function Menu() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-            className="menu-subtitle font-sans text-[#61615f] font-medium text-lg md:text-xl lg:text-2xl tracking-wide mt-6"
+            className="font-sans text-[#61615f] font-medium text-lg md:text-xl lg:text-2xl tracking-wide mt-6"
           >
             Handpicked flavors inspired by Vietnamese café culture
           </motion.p>
         </div>
 
-        {/* Featured Items Showcase */}
-        <div className="featured-items flex flex-col gap-20 md:gap-36 mb-24 max-w-6xl mx-auto">
+        {/* Featured Items — true zig-zag on desktop, stacked on mobile */}
+        <div className="flex flex-col gap-24 md:gap-40 mb-24">
           {featuredItems.map((item, index) => {
-            const isEven = index % 2 !== 0; // Alternating zig-zag
+            const isReversed = index % 2 !== 0;
             return (
-              <div
+              <motion.div
                 key={item.id}
-                className={`menu-item flex flex-col ${isEven ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-10 lg:gap-24`}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.9, ease: "easeOut" }}
+                className={`flex flex-col ${isReversed ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-10 md:gap-16 lg:gap-24`}
               >
-                {/* Image Side */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="w-full lg:w-1/2"
-                >
-                  <div className="group relative aspect-[4/3] rounded-[24px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.12)]">
+                {/* Image — square crop to show food beautifully */}
+                <div className="w-full md:w-1/2 flex-shrink-0">
+                  <div className="group relative w-full aspect-square rounded-[32px] md:rounded-[40px] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.18)]">
                     <img
                       src={item.image}
                       alt={item.name}
                       loading="lazy"
-                      className="menu-item-image w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-coffee/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    {/* subtle dark vignette at bottom */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
                   </div>
-                </motion.div>
+                </div>
 
-                {/* Content Side */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-                  className="menu-item-content w-full lg:w-1/2 flex flex-col items-start px-2 lg:px-0"
-                >
-                  <span className="menu-item-special inline-block px-5 py-2 mb-6 text-[10px] md:text-xs font-black tracking-[0.2em] uppercase rounded-full bg-[#E8DCC4] text-[#4B2E2E] shadow-sm">
+                {/* Content */}
+                <div className={`w-full md:w-1/2 flex flex-col ${isReversed ? 'md:items-end md:text-right' : 'md:items-start md:text-left'} items-center text-center px-2`}>
+                  <motion.span
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    className="inline-block px-5 py-2 mb-6 text-[10px] md:text-xs font-black tracking-[0.2em] uppercase rounded-full bg-[#E8DCC4] text-[#4B2E2E] shadow-sm"
+                  >
                     {item.specialty}
-                  </span>
+                  </motion.span>
 
-                  <h3 className="menu-item-title text-3xl md:text-5xl lg:text-6xl font-serif font-black tracking-tight mb-5 text-[#4B2E2E] leading-[1.05]">
+                  <motion.h3
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.25, duration: 0.7 }}
+                    className="text-3xl md:text-4xl lg:text-5xl font-serif font-black tracking-tight mb-6 text-[#4B2E2E] leading-tight"
+                  >
                     {item.name}
-                  </h3>
+                  </motion.h3>
 
-                  <p className="menu-item-description font-sans text-base md:text-lg lg:text-xl text-[#61615f] leading-relaxed mb-10 max-w-lg font-medium opacity-80">
+                  {/* Divider line */}
+                  <div className={`w-16 h-[2px] bg-[#4B2E2E]/20 mb-6 ${isReversed ? 'md:ml-auto' : ''}`} />
+
+                  <motion.p
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3, duration: 0.7 }}
+                    className="font-sans text-base md:text-lg text-[#61615f] leading-relaxed mb-10 font-medium opacity-80 max-w-md"
+                  >
                     {item.description}
-                  </p>
+                  </motion.p>
 
-                  <button className="text-xs md:text-sm font-black tracking-[0.2em] uppercase text-[#4B2E2E] hover:text-[#2E1A1A] transition-all duration-300 flex items-center gap-2 group">
+                  <motion.button
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4, duration: 0.6 }}
+                    className="text-xs font-black tracking-[0.2em] uppercase text-[#4B2E2E] hover:text-[#2E1A1A] transition-all duration-300 flex items-center gap-3 group"
+                  >
                     Full Details
-                    <ChevronRight size={18} className="group-hover:translate-x-2 transition-transform duration-300" />
-                  </button>
-                </motion.div>
-              </div>
+                    <div className="w-8 h-[1px] bg-[#4B2E2E]/30 group-hover:bg-[#4B2E2E] group-hover:w-14 transition-all duration-300" />
+                  </motion.button>
+                </div>
+              </motion.div>
             );
           })}
         </div>
@@ -167,12 +190,11 @@ export default function Menu() {
           className="flex flex-col items-center justify-center gap-10"
         >
           <div className="w-full max-w-sm h-px bg-gradient-to-r from-transparent via-[#4B2E2E]/20 to-transparent" />
-
           <motion.button
             whileHover={{ scale: 1.05, y: -4 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsModalOpen(true)}
-            className="show-menu-btn px-12 py-6 rounded-full bg-[#4B2E2E] text-[#fdfcf8] font-black text-sm uppercase tracking-[0.25em] hover:bg-[#2E1A1A] transition-all duration-500 shadow-2xl focus:outline-none"
+            className="px-12 py-6 rounded-full bg-[#4B2E2E] text-[#fdfcf8] font-black text-sm uppercase tracking-[0.25em] hover:bg-[#2E1A1A] transition-all duration-500 shadow-2xl focus:outline-none"
           >
             View Full Menu
           </motion.button>
@@ -180,12 +202,10 @@ export default function Menu() {
 
       </div>
 
-      {/* ─── Full-Screen Menu Modal ─── */}
+      {/* Modal — unchanged */}
       <AnimatePresence>
         {isModalOpen && (
           <div className="menu-modal fixed inset-0 z-[100] flex items-center justify-center p-4">
-
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -193,14 +213,12 @@ export default function Menu() {
               onClick={closeModal}
               className="absolute inset-0 bg-[#1a1a1a]/95 backdrop-blur-xl"
             />
-
-            {/* Modal Box */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 40 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 40 }}
               transition={{ type: 'spring', stiffness: 250, damping: 30 }}
-              className="modal-content relative w-full max-w-4xl bg-[#fdfcf8] rounded-[48px] shadow-2xl overflow-hidden flex flex-col max-h-[92vh]"
+              className="relative w-full max-w-6xl bg-[#fdfcf8] rounded-[48px] shadow-2xl overflow-hidden flex flex-col max-h-[95vh]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Top Bar */}
@@ -217,9 +235,9 @@ export default function Menu() {
                 </button>
               </div>
 
-              {/* Slider Area */}
-              <div className="flex-1 relative px-6 py-8 md:px-12 md:py-12 overflow-y-auto scrollbar-hide">
-                <div className="relative overflow-hidden rounded-[32px] shadow-2xl aspect-[3/4] max-w-[440px] mx-auto bg-stone-100 group">
+              {/* Slider */}
+              <div className="flex-1 relative px-4 py-6 md:px-12 md:py-12 overflow-y-auto min-h-0 flex flex-col items-center">
+                <div className="relative overflow-hidden rounded-[32px] shadow-2xl w-full aspect-[4/5] md:aspect-[3/4] max-w-2xl max-h-[80vh] bg-stone-100">
                   <AnimatePresence custom={direction} mode="wait">
                     <motion.img
                       key={currentIndex}
@@ -231,27 +249,19 @@ export default function Menu() {
                       animate="center"
                       exit="exit"
                       transition={{ duration: 0.4, ease: 'easeInOut' }}
-                      className="menu-image-large absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-contain bg-charcoal/5"
                     />
                   </AnimatePresence>
-
-                  <button
-                    onClick={prev}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/90 hover:bg-white shadow-2xl text-black hover:scale-110 transition-all z-10 hidden sm:flex"
-                  >
+                  <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/90 hover:bg-white shadow-2xl text-black hover:scale-110 transition-all z-10 hidden sm:flex">
                     <ChevronLeft size={24} />
                   </button>
-
-                  <button
-                    onClick={next}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/90 hover:bg-white shadow-2xl text-black hover:scale-110 transition-all z-10 hidden sm:flex"
-                  >
+                  <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/90 hover:bg-white shadow-2xl text-black hover:scale-110 transition-all z-10 hidden sm:flex">
                     <ChevronRight size={24} />
                   </button>
                 </div>
 
                 {/* Mobile Arrows */}
-                <div className="flex justify-between mt-8 sm:hidden">
+                <div className="flex justify-between w-full max-w-2xl mt-8 sm:hidden px-4">
                   <button onClick={prev} className="p-5 rounded-2xl bg-black/5 text-black flex items-center gap-3 font-bold uppercase text-[10px] tracking-widest">
                     <ChevronLeft size={16} /> Prev
                   </button>
@@ -260,20 +270,18 @@ export default function Menu() {
                   </button>
                 </div>
 
-                {/* Indicators */}
-                <div className="flex justify-center gap-4 mt-12 mb-4">
+                {/* Dots */}
+                <div className="flex justify-center gap-4 mt-10 mb-4">
                   {menuGallery.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => { setDirection(i > currentIndex ? 1 : -1); setCurrentIndex(i); }}
-                      className={`h-1.5 rounded-full transition-all duration-500 ${i === currentIndex ? 'w-12 bg-black' : 'w-3 bg-black/10'
-                        }`}
+                      className={`h-1.5 rounded-full transition-all duration-500 ${i === currentIndex ? 'w-12 bg-black' : 'w-3 bg-black/10'}`}
                     />
                   ))}
                 </div>
               </div>
             </motion.div>
-
           </div>
         )}
       </AnimatePresence>

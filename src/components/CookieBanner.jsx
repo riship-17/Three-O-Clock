@@ -112,10 +112,11 @@ export default function CookieBanner() {
             whileHover={{ scale: 1.1, rotate: 10 }}
             whileTap={{ scale: 0.95 }}
             onClick={openBanner}
-            className="fixed bottom-10 left-10 z-[90] w-14 h-14 bg-charcoal/80 backdrop-blur-md border border-cream/20 rounded-[20px] flex items-center justify-center text-cream/70 shadow-2xl hover:bg-charcoal hover:text-cream hover:border-cream/40 transition-all duration-300 group"
+            className="fixed bottom-6 left-4 z-[999] w-14 h-14 bg-charcoal/80 backdrop-blur-md border border-cream/20 rounded-[20px] flex items-center justify-center text-cream/70 shadow-2xl hover:bg-charcoal hover:text-cream hover:border-cream/40 transition-all duration-300 group"
           >
             <Cookie size={24} className="group-hover:animate-pulse" />
           </motion.button>
+
         )}
       </AnimatePresence>
     </>

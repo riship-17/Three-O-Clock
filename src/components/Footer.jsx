@@ -1,62 +1,66 @@
-import { motion } from 'framer-motion';
+import { useScrollReveal } from '../hooks/useScrollReveal'
+import { Instagram, MapPin, Mail, Phone } from 'lucide-react'
 
 export default function Footer() {
+  const { ref: footerRef, style: footerStyle } = useScrollReveal({ y: 30, duration: 1 })
+
   return (
-    <footer className="bg-charcoal py-16 border-t border-cream/10 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center">
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-8"
-        >
-          <img
-            src="/logo.png"
-            alt="Three O'Clock Cafe"
-            className="h-16 w-auto invert brightness-200"
-          />
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-cream/50 uppercase tracking-[0.3em] text-sm mb-12 font-semibold"
-        >
-          Brewed for the Night 🌙
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="flex space-x-6 mb-12"
-        >
-          <a
-            href="https://www.instagram.com/threeoclock_gandhinagar/?hl=en"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-cream/60 hover:text-burnt-orange transition-colors text-sm tracking-wider uppercase"
-          >
-            Instagram
-          </a>
-
-        </motion.div>
-
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-cream/20 to-transparent mb-8" />
-
-        <div className="text-cream/40 text-xs tracking-wider flex flex-col md:flex-row justify-between w-full items-center">
-          <p>&copy; {new Date().getFullYear()} Three O'Clock Cafe. All rights reserved.</p>
-          <div className="flex space-x-4 mt-4 md:mt-0">
-            <a href="#" className="hover:text-cream transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-cream transition-colors">Terms of Service</a>
+    <footer className="footer" ref={footerRef} style={footerStyle}>
+      <div className="footer-grid">
+        <div className="footer-brand">
+          <div className="footer-brand-logo">
+            Three O'<span>Clock</span>
+          </div>
+          <p className="footer-brand-tagline">
+            Gandhinagar's favorite night owl destination. Artisan coffee, delicious snacks, and the perfect ambiance for late-prime conversations.
+          </p>
+          <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
+            <a href="https://www.instagram.com/threeoclock_gandhinagar/?hl=en" className="footer-insta" target="_blank" rel="noopener noreferrer">
+              <Instagram size={18} />
+            </a>
+            <a href="#location" className="footer-insta"><MapPin size={18} /></a>
+            <a href="mailto:3oclockgandhinagar@gmail.com" className="footer-insta"><Mail size={18} /></a>
+            <a href="tel:+919898947333" className="footer-insta"><Phone size={18} /></a>
           </div>
         </div>
 
+        <div className="footer-col">
+          <div className="footer-col-title">Navigate</div>
+          <ul className="footer-links">
+            <li><a href="#about" className="footer-link">Our Story</a></li>
+            <li><a href="#menu" className="footer-link">The Menu</a></li>
+            <li><a href="#gallery" className="footer-link">Gallery</a></li>
+            <li><a href="#location" className="footer-link">Find Us</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-col">
+          <div className="footer-col-title">Offerings</div>
+          <ul className="footer-links">
+            <li><a href="#" className="footer-link">Artisan Coffee</a></li>
+            <li><a href="#" className="footer-link">Specialty Teas</a></li>
+            <li><a href="#" className="footer-link">Late Night Snacks</a></li>
+            <li><a href="#" className="footer-link">Gourmet Desserts</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-col">
+          <div className="footer-col-title">Connect</div>
+          <ul className="footer-links">
+            <li><a href="https://www.instagram.com/threeoclock_gandhinagar/?hl=en" target="_blank" rel="noopener noreferrer" className="footer-link">Instagram</a></li>
+            
+          </ul>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <div className="footer-copy">
+          © {new Date().getFullYear()} Three O'Clock Gandhinagar. Brewed for the Night 🌙.
+        </div>
+        <a href="https://www.instagram.com/threeoclock_gandhinagar/?hl=en" target="_blank" rel="noopener noreferrer" className="footer-copy hover:text-burnt-orange transition-colors">
+          @THREEOCLOCK_GANDHINAGAR
+        </a>
       </div>
     </footer>
-  );
+  )
 }

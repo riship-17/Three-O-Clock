@@ -10,7 +10,8 @@ const UPCOMING_EVENT = {
   targetDate: "2026-04-03T17:00:00",
   venue: "Three O'Clock Café, Gandhinagar",
   description: "An exclusive late-night gathering curated for those who appreciate the finer things — live music, artisanal Vietnamese brews, and an atmosphere that feels like a secret you'll want to share.",
-  poster: "https://res.cloudinary.com/dgry55pvk/image/upload/v1774531468/SOCIAL_MEDIA_DESIGN_3.jpg_k60hoz.jpg",
+  poster: "https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_800/v1774531468/SOCIAL_MEDIA_DESIGN_3.jpg_k60hoz.jpg",
+
   tags: ["Live Music", "Curated Menu", "Special Brews", "Limited Seats"],
 };
 
@@ -143,7 +144,7 @@ export default function Events() {
               {/* Countdown Timer */}
               <div className="space-y-4">
                 <p className="text-stone text-[10px] uppercase tracking-[0.4em] font-black">Book Fast · Time Remaining</p>
-                <div className="grid grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   {timeSegments.map((segment, idx) => (
                     <div key={idx} className="flex flex-col items-center p-4 rounded-2xl bg-linen/5 border border-linen/10">
                       <div className="text-2xl md:text-3xl font-black text-linen mb-1 font-mono">

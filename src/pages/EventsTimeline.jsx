@@ -158,7 +158,7 @@ function VideoCard({ event, onPlay, isIntro }) {
             </span>
           ))}
         </div>
-        <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-black text-[#4B2E2E] tracking-tighter leading-none">
+        <h3 className="text-[clamp(1.75rem,8vw,3.5rem)] font-serif font-black text-[#4B2E2E] tracking-tighter leading-[1.1]">
           {event.title}
         </h3>
         <p className="text-[#61615f] leading-relaxed text-lg font-light max-w-md opacity-80">
@@ -223,7 +223,7 @@ export default function EventsTimeline() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-serif font-black text-white leading-[0.9] tracking-tighter drop-shadow-2xl mb-8"
+            className="text-[clamp(3.5rem,15vw,8rem)] font-serif font-black text-white leading-[0.9] tracking-tighter drop-shadow-2xl mb-8"
           >
             Fragments <br />
             <span className="text-[#E8DCC4]">of Light</span>
@@ -247,8 +247,8 @@ export default function EventsTimeline() {
       <section id="timeline" className="timeline relative py-32 md:py-60">
         
         {/* Section Title */}
-        <div className="text-center mb-32 px-4">
-          <h2 className="text-5xl md:text-7xl font-serif font-black text-[#4B2E2E] tracking-tighter">The Journey</h2>
+        <div className="text-center mb-24 md:mb-32 px-4">
+          <h2 className="text-[clamp(2.5rem,10vw,4.5rem)] font-serif font-black text-[#4B2E2E] tracking-tighter leading-none">The Journey</h2>
         </div>
 
         {/* Center line (Desktop Only) */}
@@ -267,24 +267,7 @@ export default function EventsTimeline() {
       </section>
 
       {/* ── CAPTURED ─────────────────────────────────── */}
-      <section className="py-24 md:py-48 bg-[#1a1a1a] text-[#fdfcf8]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
-            <div className="max-w-2xl">
-              <span className="text-[#d97706] text-xs font-black tracking-[0.4em] uppercase mb-4 block">Archive 001</span>
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-black tracking-tighter">Captured Memories</h2>
-            </div>
-            <p className="text-white/40 text-lg md:text-xl font-light max-w-xs md:text-right">
-              Still frames that define the atmosphere of late night Gandhinagar.
-            </p>
-          </div>
-          <Masonry
-            items={masonryItems}
-            animateFrom="bottom"
-            scaleOnHover
-          />
-        </div>
-      </section>
+     
 
       {/* ── MODAL ────────────────────────────────────── */}
       <AnimatePresence>
