@@ -175,6 +175,15 @@ html.lenis {
   @apply py-24 px-4 sm:px-8 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-coffee overflow-hidden;
 }
 
+.map-tiles-light {
+  filter: grayscale(100%) brightness(0.9) contrast(1.2) sepia(10%) !important;
+}
+
+.map-overlay {
+  @apply absolute inset-0 pointer-events-none z-[10] shadow-[inset_0_0_80px_rgba(0,0,0,0.5)];
+  background: radial-gradient(circle, transparent 40%, rgba(60, 60, 60, 0.2) 100%);
+}
+
 .map-container {
   @apply relative rounded-3xl overflow-hidden h-[400px] lg:h-[600px] border border-cream/10 shadow-2xl;
   z-index: 1;
