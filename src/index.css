@@ -22,7 +22,7 @@
 
 @layer base {
   html, body, #root {
-    margin: 0;
+    margin: 0; 
     padding: 0;
     width: 100%;
     max-width: none !important;
@@ -252,12 +252,12 @@ html.lenis {
 }
 
 .footer-brand-logo {
-  @apply text-3xl font-bold mb-6 text-cream tracking-tight;
+  @apply text-3xl font-bold mb-6 text-white tracking-tight;
   font-family: Oswald, sans-serif;
 }
 
 .footer-brand-logo span {
-  @apply text-burnt-orange;
+  @apply text-white;
 }
 
 .footer-brand-tagline {

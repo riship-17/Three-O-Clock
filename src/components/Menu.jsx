@@ -8,21 +8,21 @@ const featuredItems = [
     name: 'Vietnamese Coffee with Condensed Milk',
     description: 'The drink that started it all. Strong Vietnamese oolong-roasted coffee dripped slow through a phin filter, sweetened with silky condensed milk — bold, rich, and unapologetically authentic. One phin. One pour. A hundred years of Vietnamese coffee culture.',
     specialty: "The Original Three O'Clock Ritual",
-    image: 'https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_900/v1774888421/VIETNAMESE_COFFEE_WITH_CONDENSED_MILK_bnmlsm.png'
+    image: 'https://res.cloudinary.com/dgry55pvk/image/upload/v1775972975/Whisk_575a69de62e19f097114e055dad5eaf5dr_rloajr.png'
   },
   {
     id: 2,
     name: 'Espresso Tiramisu',
     description: 'Layers of espresso-soaked sponge, velvety mascarpone, and a dusting of dark cocoa — our Tiramisu is built for the ones who take their coffee seriously, even in dessert form. Espresso soaked. Mascarpone layered. Worth every late night.',
     specialty: 'A Little Italy in Your Moment',
-    image: 'https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_900/v1774888340/ESPRESSO_TIRAMISU_qgs0jy.png'
+    image: 'https://res.cloudinary.com/dgry55pvk/image/upload/v1775973517/Whisk_cb2f57f4cf0bbeb9b7940eac57f97a1ddr_isabpz.png'
   },
   {
     id: 3,
     name: 'Oolong Pandan Tea',
     description: "Rooted in Southeast Asian tradition, our Oolong Pandan is slow-brewed with whole pandan leaves and premium Vietnamese oolong — earthy, fragrant, and made for the quiet hours. Pandan meets oolong. Vietnam meets your 3 AM.",
     specialty: "Vietnam's Favorite Pairing",
-    image: 'https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_900/v1774852438/OOLONG_PANDAN_TEA_v6djdi.png'
+    image: 'https://res.cloudinary.com/dgry55pvk/image/upload/v1775972480/Whisk_1171fbddbbd32a4a3084fba3bcbf12f4dr_pyuzhb.png'
   }
 ];
 
@@ -119,12 +119,12 @@ export default function Menu() {
               >
                 {/* Image — square crop to show food beautifully */}
                 <div className="w-full md:w-1/2 flex-shrink-0">
-                  <div className="group relative w-full aspect-square rounded-[32px] md:rounded-[40px] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.18)]">
+                  <div className="group relative w-full rounded-[32px] md:rounded-[40px] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.18)]">
                     <img
                       src={item.image}
                       alt={item.name}
                       loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                     {/* subtle dark vignette at bottom */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
@@ -166,16 +166,7 @@ export default function Menu() {
                     {item.description}
                   </motion.p>
 
-                  <motion.button
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4, duration: 0.6 }}
-                    className="text-xs font-black tracking-[0.2em] uppercase text-[#4B2E2E] hover:text-[#2E1A1A] transition-all duration-300 flex items-center gap-3 group"
-                  >
-                    Full Details
-                    <div className="w-8 h-[1px] bg-[#4B2E2E]/30 group-hover:bg-[#4B2E2E] group-hover:w-14 transition-all duration-300" />
-                  </motion.button>
+                 
                 </div>
               </motion.div>
             );

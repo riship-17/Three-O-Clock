@@ -174,7 +174,7 @@ export default function About() {
               {/* ── Full-bleed portrait ── */}
               <div className="img-zoom relative w-full h-72 md:h-[420px] overflow-hidden">
                 <img
-                  src="https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_900/v1774893282/DSC05160_upr3ni.jpg"
+                  src="https://res.cloudinary.com/dgry55pvk/image/upload/v1775971927/Gemini_Generated_Image_3s43i73s43i73s43_komzju.png"
                   alt="Dhruv Soni"
                   className="w-full h-full object-cover object-top"
                 />
