@@ -6,6 +6,13 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "redirects": [
+      {
+        "source": "/**",
+        "destination": "https://threeoclockgandhinagar.com/:splat",
+        "type": 301
+      }
+    ],
     "rewrites": [
       {
         "source": "**",

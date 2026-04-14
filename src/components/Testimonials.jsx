@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
 const testimonials = [
-  { text: "Open till 3 AM 🌙", detail: "The perfect late-night sanctuary." },
+  { text: "Open till 3 AM ", detail: "The perfect late-night sanctuary." },
   { text: "Strong Vietnamese Coffee", detail: "Authentic, rich, and keeps you awake." },
   { text: "Perfect for study & chill", detail: "Cozy corners and warm lighting." },
-  { text: "Live Music Nights 🎶", detail: "Acoustic vibes every weekend." }
+  { text: "Live Music Nights ", detail: "Acoustic vibes every weekend." }
 ];
 
 export default function Testimonials() {

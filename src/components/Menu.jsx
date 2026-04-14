@@ -31,8 +31,10 @@ const menuGallery = [
   'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959539/Screenshot_2026-03-31_at_5.47.29_PM_ambh9w.png',
   'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959556/Screenshot_2026-03-31_at_5.47.37_PM_wnwcw7.png',
   'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959536/Screenshot_2026-03-31_at_5.47.44_PM_fpeokb.png',
-
   'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959543/Screenshot_2026-03-31_at_5.47.50_PM_qkg3lk.png',
+  "https://ik.imagekit.io/zvgp583fb/Screenshot%202026-04-14%20at%2010.49.13%E2%80%AFPM.png",
+  "https://ik.imagekit.io/zvgp583fb/Screenshot%202026-04-14%20at%2010.49.27%E2%80%AFPM.png",
+  "https://ik.imagekit.io/zvgp583fb/Screenshot%202026-04-14%20at%2010.49.43%E2%80%AFPM.png",
   'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959563/Screenshot_2026-03-31_at_5.47.54_PM_bd6mud.png'
 ];
 
@@ -98,10 +100,25 @@ export default function Menu() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-            className="font-sans text-[#61615f] font-medium text-lg md:text-xl lg:text-2xl tracking-wide mt-6"
+            className="font-sans text-[#61615f] font-medium text-lg md:text-xl lg:text-2xl tracking-wide mt-6 mb-10"
           >
             Handpicked flavors inspired by Vietnamese café culture
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="flex justify-center"
+          >
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="px-8 py-4 font-black text-xs uppercase tracking-[0.25em] bg-[#d97706] text-white border-2 border-black transition-all shadow-[6px_6px_0px_black] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] active:scale-95"
+            >
+              Explore Full Menu
+            </button>
+          </motion.div>
         </div>
 
         {/* Featured Items — true zig-zag on desktop, stacked on mobile */}
@@ -165,35 +182,13 @@ export default function Menu() {
                   >
                     {item.description}
                   </motion.p>
-
-                 
                 </div>
               </motion.div>
             );
           })}
         </div>
-
-        {/* View Full Menu Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-col items-center justify-center gap-10"
-        >
-          <div className="w-full max-w-sm h-px bg-gradient-to-r from-transparent via-[#4B2E2E]/20 to-transparent" />
-          <motion.button
-            whileHover={{ scale: 1.05, y: -4 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsModalOpen(true)}
-            className="px-12 py-6 rounded-full bg-[#4B2E2E] text-[#fdfcf8] font-black text-sm uppercase tracking-[0.25em] hover:bg-[#2E1A1A] transition-all duration-500 shadow-2xl focus:outline-none"
-          >
-            View Full Menu
-          </motion.button>
-        </motion.div>
-
       </div>
 
-      {/* Modal — unchanged */}
       <AnimatePresence>
         {isModalOpen && (
           <div className="menu-modal fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -204,78 +199,78 @@ export default function Menu() {
               onClick={closeModal}
               className="absolute inset-0 bg-[#1a1a1a]/95 backdrop-blur-xl"
             />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 40 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 40 }}
-              transition={{ type: 'spring', stiffness: 250, damping: 30 }}
-              className="relative w-full max-w-6xl bg-[#fdfcf8] rounded-[48px] shadow-2xl overflow-hidden flex flex-col max-h-[95vh]"
-              onClick={(e) => e.stopPropagation()}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 40 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: 40 }}
+          transition={{ type: 'spring', stiffness: 250, damping: 30 }}
+          className="relative w-full max-w-6xl bg-[#fdfcf8] rounded-[48px] shadow-2xl overflow-hidden flex flex-col max-h-[95vh]"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Top Bar */}
+          <div className="flex items-center justify-between px-10 py-8 border-b border-[#3c3c3c]/8">
+            <div>
+              <p className="text-[10px] font-black tracking-[0.3em] uppercase text-[#8f908a] mb-1">Three O'Clock Café</p>
+              <h3 className="text-3xl font-black tracking-tighter text-[#3c3c3c]">Digital Menu</h3>
+            </div>
+            <button
+              onClick={closeModal}
+              className="p-4 rounded-full bg-[#f0ede6] hover:bg-black hover:text-white transition-all duration-300"
             >
-              {/* Top Bar */}
-              <div className="flex items-center justify-between px-10 py-8 border-b border-[#3c3c3c]/8">
-                <div>
-                  <p className="text-[10px] font-black tracking-[0.3em] uppercase text-[#8f908a] mb-1">Three O'Clock Café</p>
-                  <h3 className="text-3xl font-black tracking-tighter text-[#3c3c3c]">Digital Menu</h3>
-                </div>
-                <button
-                  onClick={closeModal}
-                  className="p-4 rounded-full bg-[#f0ede6] hover:bg-black hover:text-white transition-all duration-300"
-                >
-                  <X size={24} />
-                </button>
-              </div>
-
-              {/* Slider */}
-              <div className="flex-1 relative px-4 py-6 md:px-12 md:py-12 overflow-y-auto min-h-0 flex flex-col items-center">
-                <div className="relative overflow-hidden rounded-[32px] shadow-2xl w-full aspect-[4/5] md:aspect-[3/4] max-w-2xl max-h-[80vh] bg-stone-100">
-                  <AnimatePresence custom={direction} mode="wait">
-                    <motion.img
-                      key={currentIndex}
-                      src={menuGallery[currentIndex]}
-                      alt={`Menu page ${currentIndex + 1}`}
-                      custom={direction}
-                      variants={slideVariants}
-                      initial="enter"
-                      animate="center"
-                      exit="exit"
-                      transition={{ duration: 0.4, ease: 'easeInOut' }}
-                      className="absolute inset-0 w-full h-full object-contain bg-charcoal/5"
-                    />
-                  </AnimatePresence>
-                  <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/90 hover:bg-white shadow-2xl text-black hover:scale-110 transition-all z-10 hidden sm:flex">
-                    <ChevronLeft size={24} />
-                  </button>
-                  <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/90 hover:bg-white shadow-2xl text-black hover:scale-110 transition-all z-10 hidden sm:flex">
-                    <ChevronRight size={24} />
-                  </button>
-                </div>
-
-                {/* Mobile Arrows */}
-                <div className="flex justify-between w-full max-w-2xl mt-8 sm:hidden px-4">
-                  <button onClick={prev} className="p-5 rounded-2xl bg-black/5 text-black flex items-center gap-3 font-bold uppercase text-[10px] tracking-widest">
-                    <ChevronLeft size={16} /> Prev
-                  </button>
-                  <button onClick={next} className="p-5 rounded-2xl bg-black text-white flex items-center gap-3 font-bold uppercase text-[10px] tracking-widest">
-                    Next <ChevronRight size={16} />
-                  </button>
-                </div>
-
-                {/* Dots */}
-                <div className="flex justify-center gap-4 mt-10 mb-4">
-                  {menuGallery.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => { setDirection(i > currentIndex ? 1 : -1); setCurrentIndex(i); }}
-                      className={`h-1.5 rounded-full transition-all duration-500 ${i === currentIndex ? 'w-12 bg-black' : 'w-3 bg-black/10'}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+              <X size={24} />
+            </button>
           </div>
-        )}
-      </AnimatePresence>
-    </section>
+
+          {/* Slider */}
+          <div className="flex-1 relative px-4 py-6 md:px-12 md:py-12 overflow-y-auto min-h-0 flex flex-col items-center">
+            <div className="relative overflow-hidden rounded-[32px] shadow-2xl w-full aspect-[4/5] md:aspect-[3/4] max-w-2xl max-h-[80vh] bg-stone-100">
+              <AnimatePresence custom={direction} mode="wait">
+                <motion.img
+                  key={currentIndex}
+                  src={menuGallery[currentIndex]}
+                  alt={`Menu page ${currentIndex + 1}`}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                  className="absolute inset-0 w-full h-full object-contain bg-charcoal/5"
+                />
+              </AnimatePresence>
+              <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/90 hover:bg-white shadow-2xl text-black hover:scale-110 transition-all z-10 hidden sm:flex">
+                <ChevronLeft size={24} />
+              </button>
+              <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/90 hover:bg-white shadow-2xl text-black hover:scale-110 transition-all z-10 hidden sm:flex">
+                <ChevronRight size={24} />
+              </button>
+            </div>
+
+            {/* Mobile Arrows */}
+            <div className="flex justify-between w-full max-w-2xl mt-8 sm:hidden px-4">
+              <button onClick={prev} className="p-5 rounded-2xl bg-black/5 text-black flex items-center gap-3 font-bold uppercase text-[10px] tracking-widest">
+                <ChevronLeft size={16} /> Prev
+              </button>
+              <button onClick={next} className="p-5 rounded-2xl bg-black text-white flex items-center gap-3 font-bold uppercase text-[10px] tracking-widest">
+                Next <ChevronRight size={16} />
+              </button>
+            </div>
+
+            {/* Dots */}
+            <div className="flex justify-center gap-4 mt-10 mb-4">
+              {menuGallery.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => { setDirection(i > currentIndex ? 1 : -1); setCurrentIndex(i); }}
+                  className={`h-1.5 rounded-full transition-all duration-500 ${i === currentIndex ? 'w-12 bg-black' : 'w-3 bg-black/10'}`}
+                />
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    )}
+  </AnimatePresence>
+    </section >
   );
 }

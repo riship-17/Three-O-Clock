@@ -48,14 +48,22 @@ export default function Footer() {
           <div className="footer-col-title">Connect</div>
           <ul className="footer-links">
             <li><a href="https://www.instagram.com/threeoclock_gandhinagar/?hl=en" target="_blank" rel="noopener noreferrer" className="footer-link">Instagram</a></li>
-            
+
           </ul>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <div className="footer-copy">
-          © {new Date().getFullYear()} Three O'Clock Gandhinagar. Brewed for the Night 🌙.
+        <div className="flex flex-col gap-3">
+          <div className="footer-copy">
+            © {new Date().getFullYear()} Three O'Clock Gandhinagar. Brewed for the Night 🌙.
+          </div>
+          <div
+            className="text-white/90 text-[10px] sm:text-xs uppercase tracking-[0.3em] font-black hover:text-white transition-colors duration-300"
+            style={{ fontFamily: "'Space Grotesk', Oswald, sans-serif" }}
+          >
+            Created & Designed by <span className="text-burnt-orange">Rishi Parekh</span>
+          </div>
         </div>
         <a href="https://www.instagram.com/threeoclock_gandhinagar/?hl=en" target="_blank" rel="noopener noreferrer" className="footer-copy hover:text-burnt-orange transition-colors">
           @THREEOCLOCK_GANDHINAGAR

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const menuItems = [
   { label: 'Home', link: '/' },
@@ -14,6 +15,7 @@ const menuItems = [
 const bookLink = "https://www.swiggy.com/restaurants/three-o-clock-raysan-koramangala-ahmedabad-1339878/dineout?is_retargeting=true&media_source=GoogleReserve&utm_campaign=GoogleMap&utm_source=GoogleReserve";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('/');
@@ -81,8 +83,9 @@ export default function Navbar() {
           setActiveSection(link);
         }
       } else {
-        // If clicking a hash from another page, let the browser transition normally (handled by href="/#id" in element)
-        window.location.href = `/${link}`;
+        // If clicking a hash from another page, use react-router navigate
+        e.preventDefault();
+        navigate(`/${link}`);
       }
     }
     setIsOpen(false);

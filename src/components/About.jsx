@@ -8,7 +8,7 @@ export default function About() {
   const stats = [
     { label: 'Founded', value: '2016', icon: Coffee },
     { label: 'Cafés in India', value: '8', icon: MapPin },
-    { label: 'Gandhinagar Space', value: '1,500 sq ft', icon: Users },
+    { label: 'Gandhinagar Space', value: '13000 sq ft', icon: Users },
   ];
 
   return (
@@ -213,16 +213,14 @@ export default function About() {
               </div>
 
               {/* ── CTA with amber glow ── */}
-              <motion.button
+              <button
                 onClick={() => { window.scrollTo(0, 0); navigate('/about'); }}
-                whileHover={{ scale: 1.02, boxShadow: '0 20px 48px -8px rgba(217,119,6,0.45)' }}
-                whileTap={{ scale: 0.98 }}
-                className="group w-full md:w-auto px-10 py-5 bg-[#d97706] text-white rounded-full flex items-center justify-center gap-4 transition-all duration-300"
+                className="group w-full md:w-auto px-10 py-5 font-black text-xs uppercase tracking-[0.25em] bg-[#d97706] text-white border-2 border-black transition-all shadow-[6px_6px_0px_black] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] active:scale-95 flex items-center justify-center gap-4"
                 style={{ fontFamily: "'DM Sans', system-ui, sans-serif" }}
               >
-                <span className="font-black text-xs tracking-widest uppercase">Full Experience</span>
+                <span>Full Experience</span>
                 <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
-              </motion.button>
+              </button>
             </motion.div>
           </div>
         </div>
