@@ -25,8 +25,9 @@ export default function Hero() {
             className="w-full h-full object-cover"
           >
             <source
-              src="https://res.cloudinary.com/dgry55pvk/video/upload/v1774601709/Sequence_03_4_gtfwqs.mp4"
+              src="https://res.cloudinary.com/dgry55pvk/video/upload/Sequence_03_4_gtfwqs.mp4"
               type="video/mp4"
+              autoPlay
             />
             {/* Fallback */}
             <img src="https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_1920/v1774434021/unnamed_sgww6b.webp" alt="Cafe Interior" className="w-full h-full object-cover" />

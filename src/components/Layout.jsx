@@ -1,11 +1,8 @@
 import { ReactLenis } from '@studio-freight/react-lenis'
-import CustomCursor from './CustomCursor'
-
 export default function Layout({ children }) {
 
   return (
     <ReactLenis root options={{ lerp: 0.1, smoothWheel: true }}>
-      <CustomCursor />
       {/* Grain Texture */}
       <div className="grain-overlay"></div>
       
