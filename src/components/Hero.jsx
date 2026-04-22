@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function Hero() {
+  const [posterVisible, setPosterVisible] = useState(true);
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
   const scale = useTransform(scrollY, [0, 500], [1, 1.1]);
@@ -13,26 +15,27 @@ export default function Hero() {
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/80 via-black/20 to-black/60" />
 
         <motion.div style={{ scale }} className="h-full w-full">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden="true"
-            poster="https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_1920/v1774434021/unnamed_sgww6b.webp"
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            <iframe
+              src="https://www.youtube.com/embed/RhQc9epEr4k?autoplay=1&mute=1&controls=0&loop=1&playlist=RhQc9epEr4k&playsinline=1&rel=0&iv_load_policy=3&modestbranding=1"
+              className="absolute top-1/2 left-1/2 w-[100vw] h-[177.77vw] min-h-[100vh] min-w-[56.25vh] -translate-x-1/2 -translate-y-1/2"
+              allow="autoplay; encrypted-media"
+              title="Hero Background Video"
+            ></iframe>
+          </div>
 
-            className="w-full h-full object-cover"
-          >
-            <source
-              src="https://res.cloudinary.com/dgry55pvk/video/upload/Sequence_03_4_gtfwqs.mp4"
-              type="video/mp4"
-              autoPlay
-            />
-            {/* Fallback */}
-            <img src="https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_1920/v1774434021/unnamed_sgww6b.webp" alt="Cafe Interior" className="w-full h-full object-cover" />
-
-          </video>
+          {/* ✅ FIXED: Poster image now ON TOP of iframe with fade-out */}
+          <img
+            src="https://ik.imagekit.io/zvgp583fb/unnamed_sgww6b%20(1).webp"
+            alt=""
+            className={`absolute inset-0 w-full h-full object-cover z-[5] transition-opacity duration-700 ease-in-out ${
+              posterVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            }`}
+            onLoad={() => {
+              // Once iframe has had time to start, fade out poster
+              setTimeout(() => setPosterVisible(false), 1600);
+            }}
+          />
         </motion.div>
       </div>
 

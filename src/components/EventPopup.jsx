@@ -8,7 +8,7 @@ const EVENT_DATA = {
   date: 'Friday, 3rd April 2026',
 };
 
-const POSTER_URL = 'https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_800/v1774531468/SOCIAL_MEDIA_DESIGN_3.jpg_k60hoz.jpg';
+const POSTER_URL = 'https://ik.imagekit.io/zvgp583fb/SOCIAL_MEDIA_DESIGN_3.jpg_k60hoz.jpg?tr=w-800,q-80,f-auto';
 
 
 // ── Floating Musical Instruments ──────────────────────────────

@@ -10,7 +10,7 @@ const UPCOMING_EVENT = {
   targetDate: "2026-04-03T17:00:00",
   venue: "Three O'Clock Café, Gandhinagar",
   description: "An exclusive late-night gathering curated for those who appreciate the finer things — live music, artisanal Vietnamese brews, and an atmosphere that feels like a secret you'll want to share.",
-  poster: "https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_800/v1774531468/SOCIAL_MEDIA_DESIGN_3.jpg_k60hoz.jpg",
+  poster: "https://ik.imagekit.io/zvgp583fb/SOCIAL_MEDIA_DESIGN_3.jpg_k60hoz.jpg?tr=w-800,q-80,f-auto",
 
   tags: ["Live Music", "Curated Menu", "Special Brews", "Limited Seats"],
 };

@@ -5,12 +5,12 @@ import Masonry from '../components/Masonry';
 import { useEffect, useRef } from 'react';
 
 const masonryItems = [
-  { id: '1', img: '/images/2026-03-07 (2).jpg', height: 520 },
-  { id: '2', img: '/images/unnamed (4).jpg', height: 380 },
-  { id: '3', img: '/images/1772095339914.jpeg', height: 460 },
-  { id: '4', img: '/images/unnamed (3).jpg', height: 600 },
-  { id: '5', img: '/images/2026-03-07 (3).jpg', height: 420 },
-  { id: '6', img: '/images/unnamed (5).jpg', height: 340 },
+  { id: '1', img: 'https://ik.imagekit.io/zvgp583fb/IMG_5906.JPG.jpeg', height: 520 },
+  { id: '2', img: 'https://ik.imagekit.io/zvgp583fb/IMG_5907.JPG.jpeg', height: 380 },
+  { id: '3', img: 'https://ik.imagekit.io/zvgp583fb/IMG_5908.JPG.jpeg', height: 460 },
+  { id: '4', img: 'https://ik.imagekit.io/zvgp583fb/IMG_5909.JPG.jpeg', height: 600 },
+  { id: '5', img: 'https://ik.imagekit.io/zvgp583fb/unnamed%20(5).jpg?updatedAt=1776828673408', height: 420 },
+  { id: '6', img: 'https://ik.imagekit.io/zvgp583fb/threeoclock.jpg?updatedAt=1776829414666', height: 340 },
 ];
 
 const pillars = [
@@ -72,9 +72,8 @@ function MarqueeStrip() {
         {repeated.map((t, i) => (
           <span
             key={i}
-            className={`text-xs md:text-sm font-black tracking-[0.35em] uppercase ${
-              t === '·' ? 'text-burnt-orange' : 'text-cream/30'
-            }`}
+            className={`text-xs md:text-sm font-black tracking-[0.35em] uppercase ${t === '·' ? 'text-burnt-orange' : 'text-cream/30'
+              }`}
           >
             {t}
           </span>
@@ -103,7 +102,7 @@ export default function AboutExtended() {
         {/* Parallax BG */}
         <motion.div style={{ y: heroY }} className="absolute inset-0 scale-110">
           <img
-            src="https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_1920/v1774434021/unnamed_sgww6b.webp"
+            src="https://ik.imagekit.io/zvgp583fb/IMG_5908.JPG.jpeg"
             alt="Cafe Atmosphere"
             className="w-full h-full object-cover opacity-50"
           />
@@ -122,18 +121,7 @@ export default function AboutExtended() {
           style={{ opacity: heroOpacity }}
           className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-28"
         >
-          {/* Pre-label */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="inline-flex items-center gap-3 mb-8 px-5 py-2 rounded-full border border-burnt-orange/30 bg-burnt-orange/10 backdrop-blur-sm"
-          >
-            <Globe size={12} className="text-burnt-orange" />
-            <span className="text-burnt-orange text-[10px] md:text-xs font-black tracking-[0.4em] uppercase">
-              Global Vision
-            </span>
-          </motion.div>
+        
 
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
@@ -220,7 +208,7 @@ export default function AboutExtended() {
             className="relative rounded-[40px] md:rounded-[56px] overflow-hidden min-h-[400px] md:min-h-[520px] group"
           >
             <img
-              src="https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_1200/v1774673317/stores-htm-3293_poskca.png"
+              src="https://ik.imagekit.io/zvgp583fb/stores-htm-3293_poskca.png?updatedAt=1776586585620"
               alt="Three O'Clock Roots"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
             />
@@ -243,21 +231,21 @@ export default function AboutExtended() {
       {/* ── SECTION 3 · THE INDIA CHAPTER ──────────────────── */}
       <section className="py-24 md:py-44 relative bg-black/20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-           <motion.div
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="relative lg:order-2"
           >
             <div className="aspect-square rounded-[48px] overflow-hidden shadow-2xl relative border border-white/10">
-              <img 
-                src="https://res.cloudinary.com/dgry55pvk/image/upload/v1774672744/1772095339914_sm1iqw.jpg" 
-                alt="Gandhinagar Outlet" 
+              <img
+                src="https://ik.imagekit.io/zvgp583fb/IMG_5908.JPG.jpeg"
+                alt="Gandhinagar Outlet"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-coffee/80 to-transparent" />
             </div>
-            
+
             <div className="absolute top-10 -right-10 bg-burnt-orange p-8 rounded-[32px] shadow-2xl hidden lg:block transform rotate-6 border-4 border-coffee">
               <p className="text-4xl font-serif font-black text-white">8th</p>
               <p className="text-xs font-black uppercase tracking-widest text-white/80 leading-none">Outlet in India</p>
@@ -437,7 +425,7 @@ export default function AboutExtended() {
         >
           {/* BG image */}
           <img
-            src="https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_1920/v1774434021/unnamed_sgww6b.webp"
+            src="https://ik.imagekit.io/zvgp583fb/unnamed_sgww6b%20(1).webp?updatedAt=1776831352285"
             alt="Three O'Clock Environment"
             className="absolute inset-0 w-full h-full object-cover opacity-35 mix-blend-luminosity transition-transform duration-[1.4s] ease-out group-hover:scale-105"
           />

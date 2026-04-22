@@ -27,7 +27,7 @@ export default function Navbar() {
 
       if (window.location.pathname === '/' || window.location.pathname === '') {
         const sections = menuItems.filter(item => item.link.startsWith('#')).map(i => i.link.substring(1));
-        let current = '/'; 
+        let current = '/';
 
         for (const section of sections) {
           const element = document.getElementById(section);
@@ -39,12 +39,12 @@ export default function Navbar() {
             }
           }
         }
-        
+
         // At the very top, fallback to Home
         if (window.scrollY < 100) {
           current = '/';
         }
-        
+
         setActiveSection(current);
       } else {
         // If on another route (like /events)
@@ -53,7 +53,7 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); 
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -92,21 +92,21 @@ export default function Navbar() {
   };
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ease-out 
         ${isOpen ? 'bg-black !backdrop-blur-none transition-none' : scrolled ? 'bg-charcoal/90 backdrop-blur-md py-3 shadow-xl border-b border-cream/5' : 'bg-charcoal/40 backdrop-blur-sm py-5 md:py-6 border-b border-transparent'}
       `}
     >
       <div className="max-w-7xl mx-auto px-8 lg:px-12 relative z-[110]">
         <div className="flex items-center justify-between">
-          
+
           {/* Logo */}
           <div className="flex-shrink-0 relative group">
             <a href="/">
-              <img 
-                src="https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_200/v1774620381/logo-footer_tudjvn.png" 
+              <img
+                src="https://ik.imagekit.io/zvgp583fb/logo-footer_tudjvn.webp"
 
-                alt="Three O'Clock" 
+                alt="Three O'Clock"
                 className={`transition-all duration-500 ease-out invert brightness-200 object-contain 
                   ${scrolled ? 'h-11 md:h-14' : 'h-12 md:h-[84px]'}
                 `}
@@ -120,10 +120,10 @@ export default function Navbar() {
               const isActive = activeSection === item.link;
               // Format link accurately if not on home page
               const finalLink = item.link.startsWith('#') ? `/${item.link}` : item.link;
-              
+
               return (
-                <a 
-                  key={i} 
+                <a
+                  key={i}
                   href={finalLink}
                   onClick={(e) => handleLinkClick(e, item.link)}
                   className={`text-base xl:text-[17px] font-bold tracking-widest uppercase transition-colors duration-300 relative group
@@ -134,11 +134,11 @@ export default function Navbar() {
                   {/* Underline hover effect */}
                   <span className={`absolute -bottom-2 left-0 h-[2px] bg-burnt-orange transition-all duration-300 
                     ${isActive ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-50'}
-                  `}/>
+                  `} />
                 </a>
               );
             })}
-            
+
             {/* CTA Book Button */}
             <a
               href={bookLink}
@@ -151,7 +151,7 @@ export default function Navbar() {
           </nav>
 
           {/* Mobile Hamburger Touch Target */}
-          <button 
+          <button
             className="lg:hidden relative p-2.5 -mr-2 text-cream hover:text-burnt-orange transition-colors font-bold min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
@@ -165,7 +165,7 @@ export default function Navbar() {
       {/* Mobile Nav Dropdown */}
       <AnimatePresence mode="wait">
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -197,7 +197,7 @@ export default function Navbar() {
                   </motion.a>
                 );
               })}
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}

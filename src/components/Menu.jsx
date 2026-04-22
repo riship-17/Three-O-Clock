@@ -8,34 +8,34 @@ const featuredItems = [
     name: 'Vietnamese Coffee with Condensed Milk',
     description: 'The drink that started it all. Strong Vietnamese oolong-roasted coffee dripped slow through a phin filter, sweetened with silky condensed milk — bold, rich, and unapologetically authentic. One phin. One pour. A hundred years of Vietnamese coffee culture.',
     specialty: "The Original Three O'Clock Ritual",
-    image: 'https://res.cloudinary.com/dgry55pvk/image/upload/v1775972975/Whisk_575a69de62e19f097114e055dad5eaf5dr_rloajr.png'
+    image: 'https://ik.imagekit.io/zvgp583fb/Whisk_575a69de62e19f097114e055dad5eaf5dr_rloajr.png'
   },
   {
     id: 2,
     name: 'Espresso Tiramisu',
     description: 'Layers of espresso-soaked sponge, velvety mascarpone, and a dusting of dark cocoa — our Tiramisu is built for the ones who take their coffee seriously, even in dessert form. Espresso soaked. Mascarpone layered. Worth every late night.',
     specialty: 'A Little Italy in Your Moment',
-    image: 'https://res.cloudinary.com/dgry55pvk/image/upload/v1775973517/Whisk_cb2f57f4cf0bbeb9b7940eac57f97a1ddr_isabpz.png'
+    image: 'https://ik.imagekit.io/zvgp583fb/Whisk_cb2f57f4cf0bbeb9b7940eac57f97a1ddr_isabpz.png'
   },
   {
     id: 3,
     name: 'Oolong Pandan Tea',
     description: "Rooted in Southeast Asian tradition, our Oolong Pandan is slow-brewed with whole pandan leaves and premium Vietnamese oolong — earthy, fragrant, and made for the quiet hours. Pandan meets oolong. Vietnam meets your 3 AM.",
     specialty: "Vietnam's Favorite Pairing",
-    image: 'https://res.cloudinary.com/dgry55pvk/image/upload/v1775972480/Whisk_1171fbddbbd32a4a3084fba3bcbf12f4dr_pyuzhb.png'
+    image: 'https://ik.imagekit.io/zvgp583fb/Whisk_1171fbddbbd32a4a3084fba3bcbf12f4dr_pyuzhb.png'
   }
 ];
 
 const menuGallery = [
-  'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959548/Screenshot_2026-03-31_at_5.47.20_PM_tsvf50.png',
-  'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959539/Screenshot_2026-03-31_at_5.47.29_PM_ambh9w.png',
-  'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959556/Screenshot_2026-03-31_at_5.47.37_PM_wnwcw7.png',
-  'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959536/Screenshot_2026-03-31_at_5.47.44_PM_fpeokb.png',
-  'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959543/Screenshot_2026-03-31_at_5.47.50_PM_qkg3lk.png',
   "https://ik.imagekit.io/zvgp583fb/Screenshot%202026-04-14%20at%2010.49.13%E2%80%AFPM.png",
   "https://ik.imagekit.io/zvgp583fb/Screenshot%202026-04-14%20at%2010.49.27%E2%80%AFPM.png",
   "https://ik.imagekit.io/zvgp583fb/Screenshot%202026-04-14%20at%2010.49.43%E2%80%AFPM.png",
-  'https://res.cloudinary.com/dgry55pvk/image/upload/v1774959563/Screenshot_2026-03-31_at_5.47.54_PM_bd6mud.png'
+  'https://ik.imagekit.io/zvgp583fb/Screenshot_2026-03-31_at_5.47.20_PM_tsvf50.png',
+  'https://ik.imagekit.io/zvgp583fb/Screenshot_2026-03-31_at_5.47.29_PM_ambh9w.png',
+  'https://ik.imagekit.io/zvgp583fb/Screenshot_2026-03-31_at_5.47.37_PM_wnwcw7.png',
+  'https://ik.imagekit.io/zvgp583fb/Screenshot_2026-03-31_at_5.47.44_PM_fpeokb.png',
+  'https://ik.imagekit.io/zvgp583fb/Screenshot_2026-03-31_at_5.47.50_PM_qkg3lk.png',
+  'https://ik.imagekit.io/zvgp583fb/Screenshot_2026-03-31_at_5.47.54_PM_bd6mud.png'
 ];
 
 export default function Menu() {
@@ -199,78 +199,78 @@ export default function Menu() {
               onClick={closeModal}
               className="absolute inset-0 bg-[#1a1a1a]/95 backdrop-blur-xl"
             />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 40 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: 40 }}
-          transition={{ type: 'spring', stiffness: 250, damping: 30 }}
-          className="relative w-full max-w-6xl bg-[#fdfcf8] rounded-[48px] shadow-2xl overflow-hidden flex flex-col max-h-[95vh]"
-          onClick={(e) => e.stopPropagation()}
-        >
-          {/* Top Bar */}
-          <div className="flex items-center justify-between px-10 py-8 border-b border-[#3c3c3c]/8">
-            <div>
-              <p className="text-[10px] font-black tracking-[0.3em] uppercase text-[#8f908a] mb-1">Three O'Clock Café</p>
-              <h3 className="text-3xl font-black tracking-tighter text-[#3c3c3c]">Digital Menu</h3>
-            </div>
-            <button
-              onClick={closeModal}
-              className="p-4 rounded-full bg-[#f0ede6] hover:bg-black hover:text-white transition-all duration-300"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 40 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 40 }}
+              transition={{ type: 'spring', stiffness: 250, damping: 30 }}
+              className="relative w-full max-w-6xl bg-[#fdfcf8] rounded-[48px] shadow-2xl overflow-hidden flex flex-col max-h-[95vh]"
+              onClick={(e) => e.stopPropagation()}
             >
-              <X size={24} />
-            </button>
-          </div>
-
-          {/* Slider */}
-          <div className="flex-1 relative px-4 py-6 md:px-12 md:py-12 overflow-y-auto min-h-0 flex flex-col items-center">
-            <div className="relative overflow-hidden rounded-[32px] shadow-2xl w-full aspect-[4/5] md:aspect-[3/4] max-w-2xl max-h-[80vh] bg-stone-100">
-              <AnimatePresence custom={direction} mode="wait">
-                <motion.img
-                  key={currentIndex}
-                  src={menuGallery[currentIndex]}
-                  alt={`Menu page ${currentIndex + 1}`}
-                  custom={direction}
-                  variants={slideVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{ duration: 0.4, ease: 'easeInOut' }}
-                  className="absolute inset-0 w-full h-full object-contain bg-charcoal/5"
-                />
-              </AnimatePresence>
-              <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/90 hover:bg-white shadow-2xl text-black hover:scale-110 transition-all z-10 hidden sm:flex">
-                <ChevronLeft size={24} />
-              </button>
-              <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/90 hover:bg-white shadow-2xl text-black hover:scale-110 transition-all z-10 hidden sm:flex">
-                <ChevronRight size={24} />
-              </button>
-            </div>
-
-            {/* Mobile Arrows */}
-            <div className="flex justify-between w-full max-w-2xl mt-8 sm:hidden px-4">
-              <button onClick={prev} className="p-5 rounded-2xl bg-black/5 text-black flex items-center gap-3 font-bold uppercase text-[10px] tracking-widest">
-                <ChevronLeft size={16} /> Prev
-              </button>
-              <button onClick={next} className="p-5 rounded-2xl bg-black text-white flex items-center gap-3 font-bold uppercase text-[10px] tracking-widest">
-                Next <ChevronRight size={16} />
-              </button>
-            </div>
-
-            {/* Dots */}
-            <div className="flex justify-center gap-4 mt-10 mb-4">
-              {menuGallery.map((_, i) => (
+              {/* Top Bar */}
+              <div className="flex items-center justify-between px-10 py-8 border-b border-[#3c3c3c]/8">
+                <div>
+                  <p className="text-[10px] font-black tracking-[0.3em] uppercase text-[#8f908a] mb-1">Three O'Clock Café</p>
+                  <h3 className="text-3xl font-black tracking-tighter text-[#3c3c3c]">Digital Menu</h3>
+                </div>
                 <button
-                  key={i}
-                  onClick={() => { setDirection(i > currentIndex ? 1 : -1); setCurrentIndex(i); }}
-                  className={`h-1.5 rounded-full transition-all duration-500 ${i === currentIndex ? 'w-12 bg-black' : 'w-3 bg-black/10'}`}
-                />
-              ))}
-            </div>
+                  onClick={closeModal}
+                  className="p-4 rounded-full bg-[#f0ede6] hover:bg-black hover:text-white transition-all duration-300"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+
+              {/* Slider */}
+              <div className="flex-1 relative px-4 py-6 md:px-12 md:py-12 overflow-y-auto min-h-0 flex flex-col items-center">
+                <div className="relative overflow-hidden rounded-[32px] shadow-2xl w-full aspect-[4/5] md:aspect-[3/4] max-w-2xl max-h-[80vh] bg-stone-100">
+                  <AnimatePresence custom={direction} mode="wait">
+                    <motion.img
+                      key={currentIndex}
+                      src={menuGallery[currentIndex]}
+                      alt={`Menu page ${currentIndex + 1}`}
+                      custom={direction}
+                      variants={slideVariants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={{ duration: 0.4, ease: 'easeInOut' }}
+                      className="absolute inset-0 w-full h-full object-contain bg-charcoal/5"
+                    />
+                  </AnimatePresence>
+                  <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/90 hover:bg-white shadow-2xl text-black hover:scale-110 transition-all z-10 hidden sm:flex">
+                    <ChevronLeft size={24} />
+                  </button>
+                  <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/90 hover:bg-white shadow-2xl text-black hover:scale-110 transition-all z-10 hidden sm:flex">
+                    <ChevronRight size={24} />
+                  </button>
+                </div>
+
+                {/* Mobile Arrows */}
+                <div className="flex justify-between w-full max-w-2xl mt-8 sm:hidden px-4">
+                  <button onClick={prev} className="p-5 rounded-2xl bg-black/5 text-black flex items-center gap-3 font-bold uppercase text-[10px] tracking-widest">
+                    <ChevronLeft size={16} /> Prev
+                  </button>
+                  <button onClick={next} className="p-5 rounded-2xl bg-black text-white flex items-center gap-3 font-bold uppercase text-[10px] tracking-widest">
+                    Next <ChevronRight size={16} />
+                  </button>
+                </div>
+
+                {/* Dots */}
+                <div className="flex justify-center gap-4 mt-10 mb-4">
+                  {menuGallery.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => { setDirection(i > currentIndex ? 1 : -1); setCurrentIndex(i); }}
+                      className={`h-1.5 rounded-full transition-all duration-500 ${i === currentIndex ? 'w-12 bg-black' : 'w-3 bg-black/10'}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
-      </div>
-    )}
-  </AnimatePresence>
+        )}
+      </AnimatePresence>
     </section >
   );
 }

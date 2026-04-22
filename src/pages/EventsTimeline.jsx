@@ -14,7 +14,7 @@ const timeline = [
     tags: [],
     artist: null,
     desc: 'As the evening unfolded, the café transformed into a space of rhythm and connection. Warm lights, clinking cups, and the quiet hum of anticipation.',
-    videoSrc: 'https://res.cloudinary.com/dgry55pvk/video/upload/v1774433227/If_you_weren_t_here_you_missed_this.Raw_unfiltered_moments_from_our_live_music_night_at_Three_ysbchl.mp4',
+    videoSrc: 'https://www.youtube.com/embed/80595M9GAVw',
     side: 'center',
   },
   {
@@ -25,7 +25,7 @@ const timeline = [
     tags: ['College Energy', 'Live Fusion'],
     artist: 'Offbeat',
     desc: 'A vibrant performance by Offbeat, the talented band from PDEU, setting the tone for the night with youthful energy and dynamic sounds that had the entire café on their feet.',
-    videoSrc: '/videos/video1.mp4',
+    videoSrc: 'https://ik.imagekit.io/zvgp583fb/video1.mp4',
     side: 'left',
   },
   {
@@ -36,7 +36,7 @@ const timeline = [
     tags: ['Local Vibes', 'Soulful Sound'],
     artist: 'Vhalam Band',
     desc: 'Vhalam Band brought a soulful and grounded performance, blending local musical essence with powerful stage presence that resonated deeply with the audience.',
-    videoSrc: '/videos/video3.mp4',
+    videoSrc: 'https://ik.imagekit.io/zvgp583fb/video3.mp4',
     side: 'right',
   },
   {
@@ -47,25 +47,56 @@ const timeline = [
     tags: ['Raw Talent', 'Intimate Set'],
     artist: 'Local Artist',
     desc: 'A heartfelt solo performance that closed the night on a high note, creating an intimate and unforgettable connection between the artist and audience.',
-    videoSrc: '/videos/video4.mp4',
+    videoSrc: 'https://ik.imagekit.io/zvgp583fb/video4.mp4',
     side: 'left',
   },
 ];
 
 const masonryItems = [
-  { id: '1', img: '/images/2026-03-07 (2).jpg', height: 520 },
-  { id: '2', img: '/images/unnamed (4).jpg', height: 380 },
-  { id: '3', img: '/images/1772095339914.jpeg', height: 460 },
-  { id: '4', img: '/images/unnamed (3).jpg', height: 600 },
-  { id: '5', img: '/images/2026-03-07 (3).jpg', height: 420 },
-  { id: '6', img: '/images/unnamed (5).jpg', height: 340 },
+  { id: '1', img: 'https://ik.imagekit.io/zvgp583fb/2026-03-07-2.jpg', height: 520 },
+  { id: '2', img: 'https://ik.imagekit.io/zvgp583fb/unnamed-4.jpg', height: 380 },
+  { id: '3', img: 'https://ik.imagekit.io/zvgp583fb/1772095339914.jpeg', height: 460 },
+  { id: '4', img: 'https://ik.imagekit.io/zvgp583fb/unnamed-3.jpg', height: 600 },
+  { id: '5', img: 'https://ik.imagekit.io/zvgp583fb/2026-03-07-3.jpg', height: 420 },
+  { id: '6', img: 'https://ik.imagekit.io/zvgp583fb/unnamed-5.jpg', height: 340 },
 ];
+
+// Helper to check for YouTube
+const getYouTubeId = (url) => {
+  const match = url.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/embed\/|youtu\.be\/|youtube\.com\/watch\?v=)([^&?/\s]+)/);
+  return match ? match[1] : null;
+};
 
 // ─── Video Card ──────────────────────────────────────────────────────────────
 
 function VideoCard({ event, onPlay, isIntro }) {
   const isLeft = event.side === 'left';
   const isRight = event.side === 'right';
+  const ytId = getYouTubeId(event.videoSrc);
+
+  const VideoPreview = () => {
+    if (ytId) {
+      return (
+        <img
+          src={`https://img.youtube.com/vi/${ytId}/maxresdefault.jpg`}
+          alt={event.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      );
+    }
+    return (
+      <video
+        src={event.videoSrc}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        onMouseEnter={(e) => e.target.play()}
+        onMouseLeave={(e) => { e.target.pause(); e.target.currentTime = 0; }}
+      />
+    );
+  };
 
   if (isIntro) {
     return (
@@ -74,24 +105,17 @@ function VideoCard({ event, onPlay, isIntro }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.8 }}
-        className="timeline-item relative flex flex-col items-center gap-8 max-w-2xl mx-auto text-center px-4"
+        className="timeline-item relative flex flex-col items-center gap-8 w-full mx-auto text-center"
       >
         {/* Intro Dot */}
         <div className="timeline-dot absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-[#d97706] shadow-[0_0_24px_6px_rgba(217,119,6,0.5)] border-4 border-[#fdfcf8] z-10" />
 
         {/* Video Area */}
         <div
-          className="event-video relative w-full rounded-2xl md:rounded-[32px] overflow-hidden shadow-2xl cursor-pointer group"
+          className="event-video relative w-full aspect-video rounded-none md:rounded-[32px] overflow-hidden shadow-2xl cursor-pointer group"
           onClick={() => onPlay(event)}
         >
-          <video
-            src={event.videoSrc}
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
-          />
+          <VideoPreview />
           <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
             <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white text-black flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-300">
               <Play className="w-8 h-8 ml-1" fill="currentColor" />
@@ -126,14 +150,9 @@ function VideoCard({ event, onPlay, isIntro }) {
           className="relative rounded-[24px] lg:rounded-[40px] overflow-hidden shadow-2xl cursor-pointer group"
           onClick={() => onPlay(event)}
         >
-          <video
-            src={event.videoSrc}
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
-          />
+          <div className="aspect-video w-full overflow-hidden">
+            <VideoPreview />
+          </div>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center shadow-xl transform opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
               <Play className="w-6 h-6 ml-1" fill="currentColor" />
@@ -141,7 +160,7 @@ function VideoCard({ event, onPlay, isIntro }) {
           </div>
           {/* Mobile persistent play icon */}
           <div className="absolute bottom-4 right-4 bg-white/90 p-3 rounded-full text-black lg:hidden">
-             <Play size={18} fill="currentColor" />
+            <Play size={18} fill="currentColor" />
           </div>
           <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent pointer-events-none">
             <p className="text-white text-[10px] font-black tracking-widest uppercase">{event.date} · {event.artist}</p>
@@ -185,8 +204,8 @@ export default function EventsTimeline() {
   const modalRef = useRef(null);
 
   useEffect(() => {
-    if (activeVideo && modalRef.current) {
-      modalRef.current.play().catch(() => {});
+    if (activeVideo && modalRef.current && !getYouTubeId(activeVideo.videoSrc)) {
+      modalRef.current.play().catch(() => { });
     }
   }, [activeVideo]);
 
@@ -204,9 +223,9 @@ export default function EventsTimeline() {
         <video
           autoPlay muted loop playsInline preload="auto"
           className="absolute inset-0 w-full h-full object-cover opacity-70"
-          poster="https://res.cloudinary.com/dgry55pvk/image/upload/v1774434021/unnamed_sgww6b.webp"
+          poster="https://ik.imagekit.io/zvgp583fb/unnamed_sgww6b.webp?tr=f-auto,q-auto,w-1200"
         >
-          <source src="https://res.cloudinary.com/dgry55pvk/video/upload/v1774433227/If_you_weren_t_here_you_missed_this.Raw_unfiltered_moments_from_our_live_music_night_at_Three_ysbchl.mp4" type="video/mp4" />
+          <source src="https://ik.imagekit.io/zvgp583fb/herosectionvideo.mp4?updatedAt=1776586588657" type="video/mp4" />
         </video>
 
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20" />
@@ -245,7 +264,7 @@ export default function EventsTimeline() {
 
       {/* ── TIMELINE ─────────────────────────────────── */}
       <section id="timeline" className="timeline relative py-32 md:py-60">
-        
+
         {/* Section Title */}
         <div className="text-center mb-24 md:mb-32 px-4">
           <h2 className="text-[clamp(2.5rem,10vw,4.5rem)] font-serif font-black text-[#4B2E2E] tracking-tighter leading-none">The Journey</h2>
@@ -267,7 +286,7 @@ export default function EventsTimeline() {
       </section>
 
       {/* ── CAPTURED ─────────────────────────────────── */}
-     
+
 
       {/* ── MODAL ────────────────────────────────────── */}
       <AnimatePresence>
@@ -290,17 +309,28 @@ export default function EventsTimeline() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="relative w-full max-w-6xl rounded-3xl overflow-hidden shadow-2xl bg-black"
+              className="relative w-full max-w-6xl rounded-3xl overflow-hidden shadow-2xl bg-black aspect-video"
               onClick={e => e.stopPropagation()}
             >
-              <video
-                ref={modalRef}
-                controls
-                autoPlay
-                playsInline
-                src={activeVideo.videoSrc}
-                className="w-full max-h-[85vh] object-contain"
-              />
+              {getYouTubeId(activeVideo.videoSrc) ? (
+                <iframe
+                  src={`${activeVideo.videoSrc}?autoplay=1&rel=0`}
+                  title={activeVideo.title}
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <video
+                  ref={modalRef}
+                  controls
+                  autoPlay
+                  playsInline
+                  src={activeVideo.videoSrc}
+                  className="w-full h-full object-contain"
+                />
+              )}
             </motion.div>
           </motion.div>
         )}

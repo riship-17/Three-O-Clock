@@ -2,20 +2,20 @@ import Masonry from './Masonry';
 import { motion } from 'framer-motion';
 
 const aestheticItems = [
-  { id: "1", img: "/images/1772095339914.jpeg", height: 600, caption: "Brewed Calm" },
-  { id: "2", img: "/images/2026-03-07 (2).jpg", height: 800, caption: "Morning Ritual" },
-  { id: "3", img: "/images/2026-03-07 (3).jpg", height: 500, caption: "Café Details" },
-  { id: "4", img: "/images/unnamed (3).jpg", height: 700, caption: "Warm Aesthetics" },
-  { id: "5", img: "/images/unnamed (4).jpg", height: 900, caption: "Vietnamese Culture" },
-  { id: "6", img: "/images/unnamed (2).jpg", height: 650, caption: "Quiet Corner" },
-  { id: "7", img: "/images/unnamed (5).jpg", height: 550, caption: "Everyday Moments" }
+  { id: "1", img: "https://ik.imagekit.io/zvgp583fb/unnamed_sgww6b%20(1).webp?updatedAt=1776831352285", height: 600, caption: "Brewed Calm" },
+  { id: "2", img: "https://ik.imagekit.io/zvgp583fb/unnamed%20(5).jpg?updatedAt=1776828673408", height: 600, caption: "Morning Ritual" },
+  { id: "3", img: "https://ik.imagekit.io/zvgp583fb/IMG_5909.JPG.jpeg", height: 500, caption: "Café Details" },
+  { id: "4", img: "https://ik.imagekit.io/zvgp583fb/unnamed%20(3).jpg?updatedAt=1776828673439", height:650, caption: "Warm Aesthetics" },
+  { id: "5", img: "https://ik.imagekit.io/zvgp583fb/IMG_5907.JPG.jpeg", height: 600, caption: "Vietnamese Culture" },
+  { id: "6", img: "https://ik.imagekit.io/zvgp583fb/threeoclock.jpg?updatedAt=1776829414666", height: 520, caption: "Quiet Corner" },
+  { id: "7", img: "https://ik.imagekit.io/zvgp583fb/IMG_5906.JPG.jpeg", height: 550, caption: "Everyday Moments" }
 ];
 
 export default function Gallery() {
   return (
     <section id="gallery" className="aesthetic-section py-24 md:py-32 bg-[#fdfcf8] overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-6">
-        
+
         {/* Header */}
         <div className="aesthetic-header text-center mb-16 md:mb-24 space-y-4 relative z-10">
           <motion.h2
@@ -40,7 +40,7 @@ export default function Gallery() {
         </div>
 
         {/* Masonry Grid Setup */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -59,7 +59,7 @@ export default function Gallery() {
             colorShiftOnHover={false}
           />
         </motion.div>
-        
+
       </div>
     </section>
   );

@@ -81,7 +81,7 @@ export default function About() {
             {/* ── Image with zoom-on-hover ── */}
             <div className="img-zoom aspect-[4/3] w-full rounded-[32px] md:rounded-[48px] overflow-hidden shadow-2xl relative">
               <img
-                src="https://res.cloudinary.com/dgry55pvk/image/upload/f_auto,q_auto,w_1200/v1774434021/unnamed_sgww6b.webp"
+                src="https://ik.imagekit.io/zvgp583fb/unnamed_sgww6b%20(1).webp?tr=w-1200,q-80,f-auto"
                 alt="Vietnamese Cafe Interior"
                 className="w-full h-full object-cover"
               />
@@ -163,42 +163,42 @@ export default function About() {
 
           <div className="lg:col-span-7 space-y-12">
             {/* ── Owner card — image full-bleed, name overlaid ── */}
-          <motion.div
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  className="relative rounded-[40px] bg-[#3c2a21] overflow-hidden"
->
-  <div className="absolute top-0 right-0 w-32 h-32 bg-[#d97706]/20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative rounded-[40px] bg-[#3c2a21] overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#d97706]/20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
 
-  {/* ── Full-bleed portrait ── */}
-  <div className="img-zoom relative w-full overflow-hidden">
-    {/* h-auto lets image define height */}
-    <img
-      src="https://ik.imagekit.io/zvgp583fb/Gemini_Generated_Image_3s43i73s43i73s43%20(1).png"
-      alt="Dhruv Soni"
-      className="w-full h-auto block"
-    />
-    {/* gradient for legibility */}
-    <div className="absolute inset-0 bg-gradient-to-t from-[#3c2a21]/90 via-[#3c2a21]/10 to-transparent" />
+              {/* ── Full-bleed portrait ── */}
+              <div className="img-zoom relative w-full overflow-hidden">
+                {/* h-auto lets image define height */}
+                <img
+                  src="https://ik.imagekit.io/zvgp583fb/Gemini_Generated_Image_3s43i73s43i73s43%20(1).png"
+                  alt="Dhruv Soni"
+                  className="w-full h-auto block"
+                />
+                {/* gradient for legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#3c2a21]/90 via-[#3c2a21]/10 to-transparent" />
 
-    {/* ── Name overlaid on image ── */}
-    <div className="absolute bottom-0 left-0 p-8 md:p-10 z-10">
-      <h5
-        style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-        className="text-2xl md:text-4xl font-bold text-[#fdfcf8] leading-none mb-1"
-      >
-        Dhruv Soni & Dhwani Soni
-      </h5>
-      <p
-        className="text-[#d97706] text-[10px] font-black uppercase tracking-[0.25em]"
-        style={{ fontFamily: "'DM Sans', system-ui, sans-serif" }}
-      >
-        Owner · Gandhinagar Outlet
-      </p>
-    </div>
-  </div>
-</motion.div>
+                {/* ── Name overlaid on image ── */}
+                <div className="absolute bottom-0 left-0 p-8 md:p-10 z-10">
+                  <h5
+                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    className="text-2xl md:text-4xl font-bold text-[#fdfcf8] leading-none mb-1"
+                  >
+                    Dhruv Soni & Dhwani Soni
+                  </h5>
+                  <p
+                    className="text-[#d97706] text-[10px] font-black uppercase tracking-[0.25em]"
+                    style={{ fontFamily: "'DM Sans', system-ui, sans-serif" }}
+                  >
+                    Owner · Gandhinagar Outlet
+                  </p>
+                </div>
+              </div>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
