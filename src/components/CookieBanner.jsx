@@ -8,17 +8,14 @@ const CONSENT_KEY = "cookieConsent";
 
 export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
-  const [showSettingsBtn, setShowSettingsBtn] = useState(false);
 
   useEffect(() => {
     const consent = localStorage.getItem(CONSENT_KEY);
     if (consent === "accepted") {
       // Silently initialize analytics if previously accepted
       initAnalytics();
-      setShowSettingsBtn(true);
     } else if (consent === "declined") {
       // Do not initialize analytics
-      setShowSettingsBtn(true);
     } else {
       // No consent recorded, show banner after short delay
       const timer = setTimeout(() => setIsVisible(true), 1500);
@@ -30,18 +27,11 @@ export default function CookieBanner() {
     localStorage.setItem(CONSENT_KEY, "accepted");
     initAnalytics();
     setIsVisible(false);
-    setTimeout(() => setShowSettingsBtn(true), 500);
   };
 
   const handleDecline = () => {
     localStorage.setItem(CONSENT_KEY, "declined");
     setIsVisible(false);
-    setTimeout(() => setShowSettingsBtn(true), 500);
-  };
-
-  const openBanner = () => {
-    setShowSettingsBtn(false);
-    setIsVisible(true);
   };
 
   return (
@@ -99,24 +89,6 @@ export default function CookieBanner() {
 
             </div>
           </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Sleek Floating Settings Trigger (Alternative side for better balance) */}
-      <AnimatePresence>
-        {showSettingsBtn && (
-          <motion.button
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-            whileHover={{ scale: 1.1, rotate: 10 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={openBanner}
-            className="fixed bottom-6 left-4 z-[999] w-14 h-14 bg-charcoal/80 backdrop-blur-md border border-cream/20 rounded-[20px] flex items-center justify-center text-cream/70 shadow-2xl hover:bg-charcoal hover:text-cream hover:border-cream/40 transition-all duration-300 group"
-          >
-            <Cookie size={24} className="group-hover:animate-pulse" />
-          </motion.button>
-
         )}
       </AnimatePresence>
     </>

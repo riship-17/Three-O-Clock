@@ -50,17 +50,17 @@ export default function FAQ() {
           <h2 className="section-title text-linen font-heading uppercase tracking-tighter">FAQs</h2>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-4">
+        <div className="max-w-4xl mx-auto space-y-3">
           {faqs.map((faq, index) => (
             <div 
               key={index} 
-              className={`border-b border-linen/10 transition-colors duration-500 ${openIndex === index ? 'bg-white/5 rounded-2xl md:px-8' : 'md:px-8'}`}
+              className={`border-b border-linen/10 transition-colors duration-500 ${openIndex === index ? 'bg-white/5 rounded-2xl px-4 md:px-8' : 'px-4 md:px-8'}`}
             >
               <button
-                className="w-full py-8 text-left flex justify-between items-center focus:outline-none group"
+                className="w-full py-6 md:py-8 text-left flex justify-between items-center focus:outline-none group"
                 onClick={() => toggleFAQ(index)}
               >
-                <span className={`text-xl md:text-2xl font-sans font-bold tracking-tight transition-colors duration-300 ${openIndex === index ? 'text-stone' : 'text-cream group-hover:text-stone'}`}>
+                <span className={`text-lg md:text-2xl font-sans font-bold tracking-tight transition-colors duration-300 ${openIndex === index ? 'text-stone' : 'text-cream group-hover:text-stone'}`}>
                   {faq.question}
                 </span>
                 <span className={`text-2xl transform transition-transform duration-500 ${openIndex === index ? 'rotate-45 text-stone' : 'text-cream/30'}`}>
@@ -75,7 +75,7 @@ export default function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
                   >
-                    <p className="pb-8 text-lg text-cream/70 font-sans leading-relaxed">
+                    <p className="pb-6 md:pb-8 text-base md:text-lg text-cream/70 font-sans leading-relaxed">
                       {faq.answer}
                     </p>
                   </motion.div>
