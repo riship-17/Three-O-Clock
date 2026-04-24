@@ -25,7 +25,7 @@ const timeline = [
     tags: ['College Energy', 'Live Fusion'],
     artist: 'Offbeat',
     desc: 'A vibrant performance by Offbeat, the talented band from PDEU, setting the tone for the night with youthful energy and dynamic sounds that had the entire café on their feet.',
-    videoSrc: 'https://ik.imagekit.io/zvgp583fb/video1.mp4',
+    videoSrc: 'https://youtube.com/shorts/yL-d074ZwDo?feature=share',
     side: 'left',
   },
   {
@@ -36,7 +36,7 @@ const timeline = [
     tags: ['Local Vibes', 'Soulful Sound'],
     artist: 'Vhalam Band',
     desc: 'Vhalam Band brought a soulful and grounded performance, blending local musical essence with powerful stage presence that resonated deeply with the audience.',
-    videoSrc: 'https://ik.imagekit.io/zvgp583fb/video3.mp4',
+    videoSrc: 'https://youtube.com/shorts/w-POWv_1Neg?feature=share',
     side: 'right',
   },
   {
@@ -47,7 +47,7 @@ const timeline = [
     tags: ['Raw Talent', 'Intimate Set'],
     artist: 'Local Artist',
     desc: 'A heartfelt solo performance that closed the night on a high note, creating an intimate and unforgettable connection between the artist and audience.',
-    videoSrc: 'https://ik.imagekit.io/zvgp583fb/video4.mp4',
+    videoSrc: 'https://youtube.com/shorts/zIE7824Vq4Y?feature=share',
     side: 'left',
   },
 ];
@@ -63,7 +63,7 @@ const masonryItems = [
 
 // Helper to check for YouTube
 const getYouTubeId = (url) => {
-  const match = url.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/embed\/|youtu\.be\/|youtube\.com\/watch\?v=)([^&?/\s]+)/);
+  const match = url.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/embed\/|youtu\.be\/|youtube\.com\/watch\?v=|youtube\.com\/shorts\/|youtu\.be\/)([^&?/\s]+)/);
   return match ? match[1] : null;
 };
 
@@ -215,6 +215,8 @@ export default function EventsTimeline() {
     return () => window.removeEventListener('keydown', handleKey);
   }, []);
 
+  const activeYtId = activeVideo ? getYouTubeId(activeVideo.videoSrc) : null;
+
   return (
     <div className="events-page bg-[#fdfcf8] min-h-screen overflow-x-hidden">
 
@@ -312,9 +314,9 @@ export default function EventsTimeline() {
               className="relative w-full max-w-6xl rounded-3xl overflow-hidden shadow-2xl bg-black aspect-video"
               onClick={e => e.stopPropagation()}
             >
-              {getYouTubeId(activeVideo.videoSrc) ? (
+              {activeYtId ? (
                 <iframe
-                  src={`${activeVideo.videoSrc}?autoplay=1&rel=0`}
+                  src={`https://www.youtube.com/embed/${activeYtId}?autoplay=1&rel=0`}
                   title={activeVideo.title}
                   className="w-full h-full"
                   frameBorder="0"
