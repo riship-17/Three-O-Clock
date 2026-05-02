@@ -36,7 +36,7 @@ const timeline = [
     tags: ['Local Vibes', 'Soulful Sound'],
     artist: 'Vhalam Band',
     desc: 'Vhalam Band brought a soulful and grounded performance, blending local musical essence with powerful stage presence that resonated deeply with the audience.',
-    videoSrc: 'https://youtube.com/shorts/w-POWv_1Neg?feature=share',
+    videoSrc: 'https://youtube.com/shorts/zIE7824Vq4Y?feature=share',
     side: 'right',
   },
   {
@@ -47,7 +47,7 @@ const timeline = [
     tags: ['Raw Talent', 'Intimate Set'],
     artist: 'Local Artist',
     desc: 'A heartfelt solo performance that closed the night on a high note, creating an intimate and unforgettable connection between the artist and audience.',
-    videoSrc: 'https://youtube.com/shorts/zIE7824Vq4Y?feature=share',
+    videoSrc: 'https://youtube.com/shorts/w-POWv_1Neg?feature=share',
     side: 'left',
   },
 ];
