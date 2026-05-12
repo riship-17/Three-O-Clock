@@ -16,25 +16,24 @@ export default function Hero() {
 
         <motion.div style={{ scale }} className="h-full w-full">
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <iframe
-              src="https://www.youtube.com/embed/RhQc9epEr4k?autoplay=1&mute=1&controls=0&loop=1&playlist=RhQc9epEr4k&playsinline=1&rel=0&iv_load_policy=3&modestbranding=1"
-              className="absolute top-1/2 left-1/2 w-[100vw] h-[177.77vw] min-h-[100vh] min-w-[56.25vh] -translate-x-1/2 -translate-y-1/2"
-              allow="autoplay; encrypted-media"
-              title="Hero Background Video"
-            ></iframe>
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute top-1/2 left-1/2 w-full h-full object-cover -translate-x-1/2 -translate-y-1/2"
+              onLoadedData={() => setPosterVisible(false)}
+            >
+              <source src="/videos/vidssave.com Sequence 03 4 gtfwqs 1 720P.mp4" type="video/mp4" />
+            </video>
           </div>
 
           {/* ✅ FIXED: Poster image now ON TOP of iframe with fade-out */}
           <img
             src="https://ik.imagekit.io/zvgp583fb/unnamed_sgww6b%20(1).webp"
             alt=""
-            className={`absolute inset-0 w-full h-full object-cover z-[5] transition-opacity duration-700 ease-in-out ${
-              posterVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
-            }`}
-            onLoad={() => {
-              // Once iframe has had time to start, fade out poster
-              setTimeout(() => setPosterVisible(false), 1600);
-            }}
+            className={`absolute inset-0 w-full h-full object-cover z-[5] transition-opacity duration-700 ease-in-out ${posterVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+              }`}
           />
         </motion.div>
       </div>
