@@ -14,7 +14,8 @@ const timeline = [
     tags: [],
     artist: null,
     desc: 'As the evening unfolded, the café transformed into a space of rhythm and connection. Warm lights, clinking cups, and the quiet hum of anticipation.',
-    videoSrc: 'https://www.youtube.com/embed/80595M9GAVw',
+    videoSrc: 'https://youtube.com/shorts/zIE7824Vq4Y?feature=share',
+    
     side: 'center',
   },
   {
@@ -25,7 +26,8 @@ const timeline = [
     tags: ['College Energy', 'Live Fusion'],
     artist: 'Offbeat',
     desc: 'A vibrant performance by Offbeat, the talented band from PDEU, setting the tone for the night with youthful energy and dynamic sounds that had the entire café on their feet.',
-    videoSrc: 'https://youtube.com/shorts/yL-d074ZwDo?feature=share',
+    videoSrc: ' https://youtube.com/shorts/w-POWv_1Neg?feature=share',
+   
     side: 'left',
   },
   {
@@ -36,7 +38,7 @@ const timeline = [
     tags: ['Local Vibes', 'Soulful Sound'],
     artist: 'Vhalam Band',
     desc: 'Vhalam Band brought a soulful and grounded performance, blending local musical essence with powerful stage presence that resonated deeply with the audience.',
-    videoSrc: 'https://youtube.com/shorts/zIE7824Vq4Y?feature=share',
+    videoSrc: 'https://www.youtube.com/embed/80595M9GAVw',
     side: 'right',
   },
   {
@@ -47,7 +49,7 @@ const timeline = [
     tags: ['Raw Talent', 'Intimate Set'],
     artist: 'Local Artist',
     desc: 'A heartfelt solo performance that closed the night on a high note, creating an intimate and unforgettable connection between the artist and audience.',
-    videoSrc: 'https://youtube.com/shorts/w-POWv_1Neg?feature=share',
+    videoSrc: 'https://youtube.com/shorts/yL-d074ZwDo?feature=share',
     side: 'left',
   },
   {
