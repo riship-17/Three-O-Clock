@@ -34,7 +34,7 @@ const timeline = [
     id: 2,
     type: 'performance',
     date: 'Second Set',
-    title: 'Vhalam Band',
+    title: 'Vaalam Band',
     tags: ['Local Vibes', 'Soulful Sound'],
     artist: 'Vhalam Band',
     desc: 'Vhalam Band brought a soulful and grounded performance, blending local musical essence with powerful stage presence that resonated deeply with the audience.',
