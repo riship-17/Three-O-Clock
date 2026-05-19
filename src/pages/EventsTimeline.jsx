@@ -50,8 +50,18 @@ const timeline = [
     videoSrc: 'https://youtube.com/shorts/w-POWv_1Neg?feature=share',
     side: 'left',
   },
+  {
+    id: 4,
+    type: 'event',
+    
+    title: 'Sundarkaand Path',
+    tags: ['Spiritual Evening', 'Devotional Gathering'],
+    artist: 'Community Event',
+    desc: 'A peaceful and devotional Sundarkaand event held at 3 o’clock, bringing together people in an atmosphere filled with spirituality, prayers, and positive energy.',
+    videoSrc: 'https://youtube.com/shorts/DYQAFRw0Dts?feature=share',
+    side: 'right',
+  },
 ];
-
 const masonryItems = [
   { id: '1', img: 'https://ik.imagekit.io/zvgp583fb/2026-03-07-2.jpg', height: 520 },
   { id: '2', img: 'https://ik.imagekit.io/zvgp583fb/unnamed-4.jpg', height: 380 },
