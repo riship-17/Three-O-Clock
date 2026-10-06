@@ -13,27 +13,42 @@ export default function Home() {
   const { hash } = useLocation();
 
   useEffect(() => {
-    if (hash) {
-      const id = hash.replace('#', '');
+    if (!hash) return;
+    const id = hash.replace('#', '');
+    const offset = 80; // height of the navbar
+    const scrollToTarget = (behavior) => {
       const element = document.getElementById(id);
-      if (element) {
-        // Small delay to ensure the page has finished its initial paint
-        // and images/videos haven't shifted the layout yet
-        const timer = setTimeout(() => {
-          const offset = 80; // height of the navbar
-          const bodyRect = document.body.getBoundingClientRect().top;
-          const elementRect = element.getBoundingClientRect().top;
-          const elementPosition = elementRect - bodyRect;
-          const offsetPosition = elementPosition - offset;
+      if (!element) return false;
+      const top = element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - offset;
+      window.scrollTo({ top, behavior });
+      return true;
+    };
 
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }, 300);
-        return () => clearTimeout(timer);
-      }
-    }
+    // Already rendered (in-page navigation): one smooth scroll is enough
+    if (scrollToTarget('smooth')) return;
+
+    // Sections below the fold are lazy loaded, so on a fresh visit (e.g. scanning
+    // the menu QR code at /#menu) the target doesn't exist yet. Poll until it does,
+    // then keep it aligned while images above it finish loading, unless the
+    // visitor starts scrolling on their own.
+    let userScrolled = false;
+    const stopFollowing = () => { userScrolled = true; };
+    const events = ['wheel', 'touchstart', 'keydown'];
+    events.forEach((e) => window.addEventListener(e, stopFollowing, { passive: true }));
+
+    let found = false;
+    let attempts = 0;
+    const interval = setInterval(() => {
+      attempts += 1;
+      if (userScrolled || attempts > 50) return clearInterval(interval);
+      if (!found) found = scrollToTarget('auto');
+      else if (attempts % 5 === 0) scrollToTarget('auto');
+    }, 100);
+
+    return () => {
+      clearInterval(interval);
+      events.forEach((e) => window.removeEventListener(e, stopFollowing));
+    };
   }, [hash]);
 
   return (
