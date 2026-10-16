@@ -38,6 +38,7 @@ export default function MenuPage() {
   const [current, setCurrent] = useState(0);
   const pageRefs = useRef([]);
   const chipRefs = useRef({});
+  const navRef = useRef(null);
 
   useEffect(() => {
     document.title = "Menu | Three O'Clock Gandhinagar";
@@ -60,8 +61,14 @@ export default function MenuPage() {
 
   const activeLabel = pageLabels[current];
 
+  // Center the active chip by scrolling only the chip row. scrollIntoView would
+  // also scroll the window, which on mobile jumps the page back to the top
+  // because the chips live in a sticky header.
   useEffect(() => {
-    chipRefs.current[activeLabel]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    const chip = chipRefs.current[activeLabel];
+    const nav = navRef.current;
+    if (!chip || !nav) return;
+    nav.scrollTo({ left: chip.offsetLeft - (nav.clientWidth - chip.offsetWidth) / 2, behavior: 'smooth' });
   }, [activeLabel]);
 
   const jumpTo = (page) => {
@@ -87,7 +94,7 @@ export default function MenuPage() {
             <Download size={14} /> PDF
           </a>
         </div>
-        <nav className="max-w-3xl mx-auto px-4 pb-3 flex gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <nav ref={navRef} className="relative max-w-3xl mx-auto px-4 pb-3 flex gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {categories.map(({ label, page }) => {
             const active = label === activeLabel;
             return (
