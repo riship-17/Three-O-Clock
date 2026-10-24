@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Download } from 'lucide-react';
 
-// Standalone menu opened from the table QR code (/menu): just the printed menu
+// Standalone menu opened from the table QR code (/#menu, also /menu): just the printed menu
 // pages stacked vertically, with quick-jump chips. Same images as the Menu section.
 const pageLabels = [
   'Cover',
